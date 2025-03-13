@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import { getWordById } from '@/data/wordData';
 import WordCard from '@/components/WordCard';
+import ConversationExamples from '@/components/ConversationExamples';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -48,6 +48,8 @@ const WordDetail: React.FC = () => {
         
         <div className="max-w-2xl mx-auto">
           <WordCard word={word} showFullDetails={true} />
+          
+          <ConversationExamples word={word} />
           
           <div className="mt-8 space-y-6">
             {word.synonyms && word.synonyms.length > 0 && (

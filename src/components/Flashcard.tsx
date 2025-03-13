@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Star, Check, VolumeX, Volume2 } from 'lucide-react';
+import { Star, Check, VolumeX, Volume2, MessageCircle } from 'lucide-react';
 import { Word } from '@/data/wordData';
 import { useVocab } from '@/contexts/VocabContext';
 import { cn } from '@/lib/utils';
@@ -29,6 +29,16 @@ const Flashcard: React.FC<FlashcardProps> = ({ word, onNext, onPrevious }) => {
     // In a real app, this would use a text-to-speech API or pre-recorded audio
     const utterance = new SpeechSynthesisUtterance(word.word);
     window.speechSynthesis.speak(utterance);
+  };
+
+  // Generate a simple conversation example
+  const getConversationExample = () => {
+    const examples = [
+      `"I'll try to ${word.word.toLowerCase()} my approach to this problem."`,
+      `"Can you explain how to ${word.word.toLowerCase()} this concept?"`,
+      `"That's an excellent example of ${word.word.toLowerCase()}."`,
+    ];
+    return examples[Math.floor(Math.random() * examples.length)];
   };
 
   return (
@@ -81,6 +91,15 @@ const Flashcard: React.FC<FlashcardProps> = ({ word, onNext, onPrevious }) => {
                   <p className="text-sm">{word.mnemonic}</p>
                 </div>
               )}
+              
+              {/* Add conversation example */}
+              <div className="border-t mt-4 pt-3">
+                <div className="flex items-center text-sm text-vocab-dark font-medium mb-1">
+                  <MessageCircle className="h-3.5 w-3.5 mr-1" />
+                  <span>Try in conversation:</span>
+                </div>
+                <p className="text-sm italic text-gray-600">{getConversationExample()}</p>
+              </div>
             </div>
             
             <p className="text-center text-gray-500 text-sm mt-4">Tap to see the word</p>
