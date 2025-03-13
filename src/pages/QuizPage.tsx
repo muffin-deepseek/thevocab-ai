@@ -4,12 +4,13 @@ import Header from '@/components/Header';
 import { useVocab } from '@/contexts/VocabContext';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Radio, RadioGroup } from '@/components/ui/radio-group';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Check, X, Zap, RefreshCw } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import LevelFilter from '@/components/LevelFilter';
 import { useToast } from '@/hooks/use-toast';
 import { Word } from '@/data/wordData';
+import QuizResults from '@/components/QuizResults';
 
 type QuizMode = 'definition' | 'word';
 type QuizStatus = 'active' | 'completed';
@@ -32,6 +33,7 @@ const QuizPage: React.FC = () => {
   const [score, setScore] = useState(0);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
+  const [quizWords, setQuizWords] = useState<Word[]>([]);
 
   // Generate new quiz when filtered words change
   useEffect(() => {
@@ -42,10 +44,10 @@ const QuizPage: React.FC = () => {
 
   // Start timer when quiz starts
   useEffect(() => {
-    if (questions.length > 0 && quizStatus === 'active') {
+    if (questions.length > 0 && quizStatus === 'active' && currentQuestionIndex === 0) {
       setStartTime(new Date());
     }
-  }, [questions, quizStatus]);
+  }, [questions, quizStatus, currentQuestionIndex]);
 
   const generateQuiz = () => {
     if (filteredWords.length < 4) {
@@ -61,9 +63,11 @@ const QuizPage: React.FC = () => {
     const numberOfQuestions = Math.min(10, filteredWords.length);
     const shuffledWords = [...filteredWords].sort(() => Math.random() - 0.5);
     const newQuestions: QuizQuestion[] = [];
+    const usedWords: Word[] = [];
 
     for (let i = 0; i < numberOfQuestions; i++) {
       const questionWord = shuffledWords[i];
+      usedWords.push(questionWord);
       
       // Generate 3 incorrect options
       const incorrectOptions: Word[] = shuffledWords
@@ -83,6 +87,7 @@ const QuizPage: React.FC = () => {
       });
     }
 
+    setQuizWords(usedWords);
     setQuestions(newQuestions);
     setCurrentQuestionIndex(0);
     setScore(0);
@@ -229,7 +234,7 @@ const QuizPage: React.FC = () => {
                         `}
                         onClick={() => !isAnswered && handleAnswer(index)}
                       >
-                        <Radio 
+                        <RadioGroupItem 
                           value={index.toString()} 
                           id={`option-${index}`}
                           disabled={isAnswered}
@@ -267,37 +272,13 @@ const QuizPage: React.FC = () => {
                 </CardFooter>
               </Card>
             ) : quizStatus === 'completed' ? (
-              <Card className="shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-xl text-center">Quiz Results</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="mb-6">
-                    <div className="text-5xl font-bold text-vocab-primary">
-                      {score} / {questions.length}
-                    </div>
-                    <p className="text-gray-500 mt-2">
-                      {Math.round((score / questions.length) * 100)}% Correct
-                    </p>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-gray-50 p-4 rounded-md">
-                      <p className="text-sm text-gray-500">Time Taken</p>
-                      <p className="text-xl font-semibold">{calculateTimeTaken()}</p>
-                    </div>
-                    <div className="bg-gray-50 p-4 rounded-md">
-                      <p className="text-sm text-gray-500">Words Learned</p>
-                      <p className="text-xl font-semibold">{score}</p>
-                    </div>
-                  </div>
-                  
-                  <Button onClick={restartQuiz} className="w-full">
-                    <RefreshCw className="h-4 w-4 mr-2" />
-                    Start New Quiz
-                  </Button>
-                </CardContent>
-              </Card>
+              <QuizResults 
+                score={score}
+                totalQuestions={questions.length}
+                timeTaken={calculateTimeTaken()}
+                quizWords={quizWords}
+                onRestartQuiz={restartQuiz}
+              />
             ) : (
               <Card className="shadow-sm">
                 <CardContent className="text-center py-12">
