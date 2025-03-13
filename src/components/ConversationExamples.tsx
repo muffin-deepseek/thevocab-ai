@@ -10,13 +10,39 @@ interface ConversationExamplesProps {
 const ConversationExamples: React.FC<ConversationExamplesProps> = ({ word }) => {
   // Generate some conversation examples using the word
   const getConversationExamples = (word: Word): string[] => {
-    const examples = [
-      `"I noticed the storm started to ${word.word === 'Abate' ? 'abate' : word.word.toLowerCase()} after lunch, so we might be able to go for that walk after all."`,
-      `"Let me try to use '${word.word.toLowerCase()}' in my presentation tomorrow to impress my colleagues."`,
-      `"That's an interesting point. To ${word.word.toLowerCase()} your argument, I would add that..."`,
-      `"I've been trying to ${word.word.toLowerCase()} my understanding of this topic by reading different perspectives."`,
-      `"Would it be correct to say that the government's policy helped to ${word.word.toLowerCase()} the economic crisis?"`,
-    ];
+    const wordInSentence = word.word.charAt(0).toLowerCase() + word.word.slice(1);
+    
+    // Custom examples based on the word's category/characteristics
+    const customExamples: Record<string, string[]> = {
+      // For social interaction words
+      Eloquent: [
+        `"Her eloquent presentation impressed everyone at the conference."`,
+        `"I wish I could be as eloquent as you when explaining complex topics."`,
+        `"The most eloquent speakers use simple language to express profound ideas."`
+      ],
+      Empathy: [
+        `"Showing empathy toward others has helped me build stronger relationships."`,
+        `"The doctor's empathy made a difficult diagnosis easier to handle."`,
+        `"True leadership requires empathy and understanding of your team's challenges."`
+      ],
+      // For intellectual/cognitive words
+      Astute: [
+        `"That was an astute observation about the company's financial strategy."`,
+        `"Her astute mind quickly identified the flaw in their argument."`,
+        `"I appreciate your astute comments during our brainstorming session."`
+      ],
+      // Default examples that work with any word
+      default: [
+        `"I noticed the situation started to ${wordInSentence} after we addressed the core issues directly."`,
+        `"I'm trying to use '${wordInSentence}' more frequently in my writing to expand my vocabulary."`,
+        `"Would you say that her approach was particularly ${wordInSentence}, or am I misusing the term?"`,
+        `"The article described the new policy as ${wordInSentence}, which I found to be an interesting characterization."`,
+        `"I've been working to ${wordInSentence} my understanding of this concept by studying different perspectives."`
+      ]
+    };
+    
+    // Use custom examples if available, otherwise use default
+    const examples = customExamples[word.word] || customExamples.default;
     
     // Return random 2-3 examples
     const numberOfExamples = Math.floor(Math.random() * 2) + 2; // 2-3 examples
