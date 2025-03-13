@@ -1,9 +1,18 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { VocabProvider } from "./contexts/VocabContext";
+
+// Pages
+import Dashboard from "./pages/Dashboard";
+import WordList from "./pages/WordList";
+import FlashcardPage from "./pages/FlashcardPage";
+import QuizPage from "./pages/QuizPage";
+import Favorites from "./pages/Favorites";
+import WordDetail from "./pages/WordDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -11,15 +20,21 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <VocabProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/words" element={<WordList />} />
+            <Route path="/flashcards" element={<FlashcardPage />} />
+            <Route path="/quiz" element={<QuizPage />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/word/:id" element={<WordDetail />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </VocabProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

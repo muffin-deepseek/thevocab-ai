@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for our vocabulary app
+				vocab: {
+					primary: '#8B5CF6',
+					secondary: '#A78BFA',
+					light: '#EDE9FE',
+					dark: '#4C1D95',
+					success: '#10B981',
+					error: '#EF4444',
+					warning: '#F59E0B',
+					info: '#3B82F6',
+					basic: '#6B7280',
+					intermediate: '#8B5CF6',
+					advanced: '#EF4444',
 				}
 			},
 			borderRadius: {
@@ -84,11 +99,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'flip': {
+					'0%, 100%': { transform: 'rotateY(0deg)' },
+					'50%': { transform: 'rotateY(180deg)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'flip': 'flip 1s cubic-bezier(0, 0, 0.2, 1)'
 			}
 		}
 	},
