@@ -1,4 +1,3 @@
-
 export type WordLevel = 'basic' | 'intermediate' | 'advanced';
 
 export interface Word {
@@ -189,7 +188,6 @@ export const words: Word[] = [
     mnemonic: "Sounds like 'as-sit-uous' - someone who sits down and works continuously.",
     synonyms: ["diligent", "attentive", "careful", "meticulous"]
   },
-  // Adding more words to have a robust dataset
   {
     id: 21,
     word: "Benign",
@@ -232,6 +230,321 @@ export const words: Word[] = [
     example: "His diligent preparation for the exam resulted in a high score.",
     level: "basic",
     synonyms: ["industrious", "careful", "meticulous", "thorough"]
+  },
+  {
+    id: 26,
+    word: "Ephemeral",
+    definition: "Lasting for a very short time",
+    example: "The ephemeral beauty of cherry blossoms lasts only a few days each spring.",
+    level: "advanced",
+    mnemonic: "Think of 'e-femeral' as sounding like 'for a mere' short time.",
+    synonyms: ["fleeting", "transient", "momentary", "short-lived"]
+  },
+  {
+    id: 27,
+    word: "Pragmatic",
+    definition: "Dealing with things sensibly and realistically; practical rather than theoretical",
+    example: "She took a pragmatic approach to solving the budget problem.",
+    level: "intermediate",
+    mnemonic: "Think 'pragma-tic' - like practical tactics.",
+    synonyms: ["practical", "realistic", "sensible", "rational"]
+  },
+  {
+    id: 28,
+    word: "Tenacious",
+    definition: "Tending to keep a firm hold of something; clinging or adhering closely",
+    example: "His tenacious grip on the rope saved him from falling.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'ten-acious' - having the strength of ten people to hold on.",
+    synonyms: ["persistent", "stubborn", "determined", "resolute"]
+  },
+  {
+    id: 29,
+    word: "Verbose",
+    definition: "Using or containing more words than needed; wordy",
+    example: "His verbose explanation confused rather than clarified the issue.",
+    level: "intermediate",
+    mnemonic: "Verb-ose - full of verbs and other words.",
+    synonyms: ["wordy", "long-winded", "rambling", "prolix"]
+  },
+  {
+    id: 30,
+    word: "Audacity",
+    definition: "Boldness or daring, especially with confident disregard for rules or norms",
+    example: "She had the audacity to question the CEO's decision in front of the board.",
+    level: "intermediate",
+    mnemonic: "Think 'audio-city' - a place where sounds are boldly loud.",
+    synonyms: ["boldness", "daring", "nerve", "impudence"]
+  },
+  {
+    id: 31,
+    word: "Equivocal",
+    definition: "Open to more than one interpretation; ambiguous or uncertain",
+    example: "His equivocal response left us unsure of his actual position on the issue.",
+    level: "advanced",
+    mnemonic: "Equi (equal) + vocal (voice) - having equal voices or meanings competing.",
+    synonyms: ["ambiguous", "unclear", "vague", "uncertain"]
+  },
+  {
+    id: 32,
+    word: "Meticulous",
+    definition: "Showing great attention to detail; very careful and precise",
+    example: "Her meticulous research uncovered facts that everyone else had missed.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'me-tick-ulous' - checking every tiny tick or detail.",
+    synonyms: ["thorough", "careful", "precise", "scrupulous"]
+  },
+  {
+    id: 33,
+    word: "Resilient",
+    definition: "Able to withstand or recover quickly from difficult conditions",
+    example: "Children are often more resilient than adults when facing adversity.",
+    level: "basic",
+    mnemonic: "Re-silent - becoming silent (calm) again after disturbance.",
+    synonyms: ["tough", "adaptable", "hardy", "flexible"]
+  },
+  {
+    id: 34,
+    word: "Profound",
+    definition: "Very great or intense; having or showing great knowledge or insight",
+    example: "The book had a profound impact on how I view the world.",
+    level: "basic",
+    mnemonic: "Pro-found - like a professional who has found deep meaning.",
+    synonyms: ["deep", "intense", "wise", "penetrating"]
+  },
+  {
+    id: 35,
+    word: "Reticent",
+    definition: "Not revealing one's thoughts or feelings readily; reserved",
+    example: "He was reticent about his experiences during the war.",
+    level: "advanced",
+    mnemonic: "Think 'reti-cent' - like keeping your two cents (opinions) in a net.",
+    synonyms: ["reserved", "restrained", "taciturn", "uncommunicative"]
+  },
+  {
+    id: 36,
+    word: "Ubiquitous",
+    definition: "Present, appearing, or found everywhere",
+    example: "Mobile phones have become ubiquitous in modern society.",
+    level: "advanced",
+    mnemonic: "Think 'ubi-quit-us' - like saying 'where quit us?' - it's everywhere, no quitting it.",
+    synonyms: ["omnipresent", "universal", "pervasive", "widespread"]
+  },
+  {
+    id: 37,
+    word: "Obsequious",
+    definition: "Obedient or attentive to an excessive or servile degree",
+    example: "The obsequious waiter hovered around the table, constantly asking if everything was satisfactory.",
+    level: "advanced",
+    mnemonic: "Ob-sequence - following a sequence of orders from others too eagerly.",
+    synonyms: ["subservient", "servile", "fawning", "sycophantic"]
+  },
+  {
+    id: 38,
+    word: "Ardent",
+    definition: "Very enthusiastic or passionate",
+    example: "He was an ardent supporter of the environmental movement.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'are-dent' - having a burning (ardor) dent in your heart.",
+    synonyms: ["passionate", "fervent", "zealous", "devoted"]
+  },
+  {
+    id: 39,
+    word: "Cryptic",
+    definition: "Having a meaning that is mysterious or obscure",
+    example: "She left a cryptic note that no one could decipher.",
+    level: "intermediate",
+    mnemonic: "Comes from 'crypt' - like something hidden in a burial chamber.",
+    synonyms: ["enigmatic", "mysterious", "obscure", "puzzling"]
+  },
+  {
+    id: 40,
+    word: "Placate",
+    definition: "Make someone less angry or hostile",
+    example: "He brought flowers to placate his wife after their argument.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'place-ate' - putting something in place to make peace.",
+    synonyms: ["appease", "pacify", "mollify", "soothe"]
+  },
+  {
+    id: 41,
+    word: "Blatant",
+    definition: "Completely obvious, conspicuous, or obtrusive, especially in an offensive way",
+    example: "The politician's blatant lie was quickly exposed by fact-checkers.",
+    level: "basic",
+    mnemonic: "Sounds like 'blare-tent' - as loud and obvious as a blaring horn.",
+    synonyms: ["obvious", "glaring", "flagrant", "conspicuous"]
+  },
+  {
+    id: 42,
+    word: "Zealot",
+    definition: "A person who is fanatical and uncompromising in pursuit of their ideals",
+    example: "He was a zealot who would never consider any opinion but his own.",
+    level: "intermediate",
+    mnemonic: "Think of 'zeal-lot' - having a lot of zeal (enthusiasm).",
+    synonyms: ["fanatic", "extremist", "radical", "enthusiast"]
+  },
+  {
+    id: 43,
+    word: "Laconic",
+    definition: "Using few words; expressing much in few words; concise",
+    example: "His laconic response of 'Maybe' left us wondering what he really thought.",
+    level: "advanced",
+    mnemonic: "Think 'lack-sonic' - lacking in sound or words.",
+    synonyms: ["terse", "concise", "brief", "succinct"]
+  },
+  {
+    id: 44,
+    word: "Taciturn",
+    definition: "Reserved or uncommunicative in speech; saying little",
+    example: "The taciturn farmer answered all questions with a nod or a grunt.",
+    level: "advanced",
+    mnemonic: "Tacit (implied, not spoken) + urn (container) - keeping words contained.",
+    synonyms: ["reserved", "uncommunicative", "reticent", "quiet"]
+  },
+  {
+    id: 45,
+    word: "Lethargic",
+    definition: "Lacking energy or enthusiasm",
+    example: "The hot weather made everyone lethargic and unwilling to move.",
+    level: "basic",
+    mnemonic: "Sounds like 'less-energetic'.",
+    synonyms: ["sluggish", "listless", "torpid", "drowsy"]
+  },
+  {
+    id: 46,
+    word: "Gregarious",
+    definition: "Fond of company; sociable",
+    example: "Her gregarious nature made her the life of every party.",
+    level: "intermediate",
+    mnemonic: "Think 'gathering-arious' - someone who loves gatherings.",
+    synonyms: ["sociable", "outgoing", "social", "friendly"]
+  },
+  {
+    id: 47,
+    word: "Furtive",
+    definition: "Attempting to avoid notice or attention, typically because of guilt or a belief that discovery would lead to trouble; secretive",
+    example: "He cast a furtive glance over his shoulder before entering the building.",
+    level: "advanced",
+    mnemonic: "Fur-tive, like a furry animal sneaking around cautiously.",
+    synonyms: ["secretive", "stealthy", "sly", "surreptitious"]
+  },
+  {
+    id: 48,
+    word: "Clandestine",
+    definition: "Kept secret or done secretively, especially because illicit",
+    example: "They held clandestine meetings in the basement of an abandoned building.",
+    level: "advanced",
+    mnemonic: "Clan-destine - like a secret clan with a hidden destiny.",
+    synonyms: ["secret", "covert", "underground", "hidden"]
+  },
+  {
+    id: 49,
+    word: "Resolute",
+    definition: "Admirably purposeful, determined, and unwavering",
+    example: "She was resolute in her decision to pursue a medical career despite the challenges.",
+    level: "intermediate",
+    mnemonic: "Re-solute - like finding a solution again and again, never giving up.",
+    synonyms: ["determined", "firm", "steadfast", "unwavering"]
+  },
+  {
+    id: 50,
+    word: "Jovial",
+    definition: "Cheerful and friendly",
+    example: "The jovial host made sure everyone at the party felt welcome.",
+    level: "basic",
+    mnemonic: "Related to 'Jove' (Jupiter), whose astrological influence was thought to make people happy.",
+    synonyms: ["cheerful", "merry", "jolly", "happy"]
+  },
+  {
+    id: 51,
+    word: "Melancholy",
+    definition: "A feeling of deep sadness, typically with no obvious cause",
+    example: "A sense of melancholy came over her as she watched the autumn leaves fall.",
+    level: "intermediate",
+    mnemonic: "Melon (heavy) + choly (sounds like lowly) - a heavy, low feeling.",
+    synonyms: ["sad", "gloomy", "dejected", "downcast"]
+  },
+  {
+    id: 52,
+    word: "Exacerbate",
+    definition: "Make a problem, bad situation, or negative feeling worse",
+    example: "His angry response only exacerbated the tension in the room.",
+    level: "advanced",
+    mnemonic: "Ex-acerb-ate - like adding extra acerbic (bitter) flavor, making things worse.",
+    synonyms: ["worsen", "aggravate", "intensify", "compound"]
+  },
+  {
+    id: 53,
+    word: "Frivolous",
+    definition: "Not having any serious purpose or value",
+    example: "She dismissed his frivolous complaints and focused on the real issues.",
+    level: "intermediate",
+    mnemonic: "Fri-volous - like a free-flowing, light-hearted thing with little value.",
+    synonyms: ["trivial", "silly", "shallow", "unimportant"]
+  },
+  {
+    id: 54,
+    word: "Diligent",
+    definition: "Having or showing care and conscientiousness in one's work or duties",
+    example: "Their diligent research uncovered crucial information for the case.",
+    level: "basic",
+    mnemonic: "Think 'do-ligent' - doing things in an intelligent, careful way.",
+    synonyms: ["hardworking", "industrious", "careful", "thorough"]
+  },
+  {
+    id: 55,
+    word: "Egregious",
+    definition: "Outstandingly bad; shocking",
+    example: "The report detailed the company's egregious violations of safety regulations.",
+    level: "advanced",
+    mnemonic: "E-gregious - something that stands out ('e-' out) from the group (greg) in a bad way.",
+    synonyms: ["flagrant", "outrageous", "shocking", "appalling"]
+  },
+  {
+    id: 56,
+    word: "Tenuous",
+    definition: "Very weak or slight; insubstantial",
+    example: "The evidence supporting their theory was tenuous at best.",
+    level: "advanced",
+    mnemonic: "Ten-u-ous - like something so thin it could only hold ten molecules.",
+    synonyms: ["slight", "weak", "fragile", "flimsy"]
+  },
+  {
+    id: 57,
+    word: "Pragmatic",
+    definition: "Dealing with things sensibly and realistically in a way that is based on practical rather than theoretical considerations",
+    example: "We need a pragmatic approach to solving this problem.",
+    level: "intermediate",
+    mnemonic: "Think 'prag-matic' - like practical magic or practical tactics.",
+    synonyms: ["practical", "realistic", "sensible", "down-to-earth"]
+  },
+  {
+    id: 58,
+    word: "Venerate",
+    definition: "Regard with great respect; revere",
+    example: "The tribe venerated their ancestors through elaborate ceremonies.",
+    level: "advanced",
+    mnemonic: "Ven-erate - like elevating (rating) something to a place of honor (akin to Venus, a goddess).",
+    synonyms: ["revere", "respect", "honor", "esteem"]
+  },
+  {
+    id: 59,
+    word: "Impetuous",
+    definition: "Acting or done quickly and without thought or care",
+    example: "She regretted her impetuous decision to quit her job without having another lined up.",
+    level: "advanced",
+    mnemonic: "Im-pet-uous - like an impatient pet that can't wait and rushes into things.",
+    synonyms: ["impulsive", "rash", "hasty", "reckless"]
+  },
+  {
+    id: 60,
+    word: "Benevolent",
+    definition: "Well meaning and kindly",
+    example: "The benevolent donor provided funds to build a new children's hospital.",
+    level: "intermediate",
+    mnemonic: "Bene (good) + volent (from 'volo', meaning 'I wish') - wishing good for others.",
+    synonyms: ["kind", "generous", "charitable", "altruistic"]
   }
 ];
 
