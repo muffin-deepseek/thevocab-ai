@@ -1,3 +1,4 @@
+
 export type WordLevel = 'basic' | 'intermediate' | 'advanced';
 
 export interface Word {
@@ -712,3 +713,473 @@ export const words: Word[] = [
     id: 79,
     word: "Nebulous",
     definition: "In the form of a cloud or haze; hazy",
+    example: "The company's goals remained nebulous and difficult to understand.",
+    level: "intermediate",
+    mnemonic: "Relates to 'nebula' (cloud in space) - cloudy and unclear.",
+    synonyms: ["hazy", "vague", "unclear", "indistinct"]
+  },
+  {
+    id: 80,
+    word: "Serendipity",
+    definition: "The occurrence of events by chance in a happy or beneficial way",
+    example: "The discovery of penicillin was a serendipity when Fleming noticed the mold killing bacteria.",
+    level: "intermediate",
+    mnemonic: "Think 'serene-dip-ity' - a pleasant surprise you dip into.",
+    synonyms: ["chance", "fortune", "luck", "coincidence"]
+  },
+  // Additional words (101-150) already added from previous response
+  {
+    id: 101,
+    word: "Fervent",
+    definition: "Having or displaying a passionate intensity",
+    example: "She was a fervent supporter of human rights.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'fervour' - intensity of feeling.",
+    synonyms: ["passionate", "intense", "ardent", "zealous"]
+  },
+  {
+    id: 102,
+    word: "Judicious",
+    definition: "Having, showing, or done with good judgment or sense",
+    example: "The manager made judicious investments that doubled the company's profits.",
+    level: "advanced",
+    mnemonic: "Think of a judge who must make wise decisions.",
+    synonyms: ["wise", "sensible", "prudent", "thoughtful"]
+  },
+  {
+    id: 103,
+    word: "Pensive",
+    definition: "Engaged in deep or serious thought",
+    example: "She had a pensive expression on her face as she considered the proposal.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'pen-sieve' - sifting through thoughts with a mental pen.",
+    synonyms: ["thoughtful", "reflective", "contemplative", "meditative"]
+  },
+  {
+    id: 104,
+    word: "Opulent",
+    definition: "Ostentatiously costly and luxurious",
+    example: "The opulent palace was decorated with gold and precious stones.",
+    level: "advanced",
+    mnemonic: "Op-u-lent - think 'open your wallet for plenty'.",
+    synonyms: ["luxurious", "lavish", "sumptuous", "wealthy"]
+  },
+  {
+    id: 105,
+    word: "Brevity",
+    definition: "Concise and exact use of words in writing or speech",
+    example: "The speaker was known for his brevity, never using more words than necessary.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'brief-ity' - the quality of being brief.",
+    synonyms: ["conciseness", "shortness", "succinctness", "terseness"]
+  },
+  {
+    id: 106,
+    word: "Adept",
+    definition: "Very skilled or proficient at something",
+    example: "She was adept at negotiating complex business deals.",
+    level: "basic",
+    mnemonic: "Think 'a-dept' - having depth of knowledge in a subject.",
+    synonyms: ["skilled", "proficient", "expert", "accomplished"]
+  },
+  {
+    id: 107,
+    word: "Venerable",
+    definition: "Accorded a great deal of respect, especially because of age, wisdom, or character",
+    example: "The venerable professor had taught at the university for over fifty years.",
+    level: "advanced",
+    mnemonic: "Think of 'venerate' - to respect deeply.",
+    synonyms: ["respected", "revered", "esteemed", "honored"]
+  },
+  {
+    id: 108,
+    word: "Convivial",
+    definition: "Friendly, lively, and enjoyable",
+    example: "They enjoyed a convivial evening with good food and conversation.",
+    level: "advanced",
+    mnemonic: "Con (with) + vivial (related to 'live') - living well with others.",
+    synonyms: ["sociable", "genial", "cordial", "agreeable"]
+  },
+  {
+    id: 109,
+    word: "Quandary",
+    definition: "A state of perplexity or uncertainty over what to do in a difficult situation",
+    example: "He was in a quandary about whether to accept the job offer or stay in his current position.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'wander-y' - your thoughts wander because you're unsure.",
+    synonyms: ["dilemma", "predicament", "difficulty", "problem"]
+  },
+  {
+    id: 110,
+    word: "Ominous",
+    definition: "Giving the impression that something bad is going to happen",
+    example: "There was an ominous silence before the storm hit.",
+    level: "basic",
+    mnemonic: "Think 'oh-mine-us' - a foreboding feeling that makes you say 'oh mine!'",
+    synonyms: ["threatening", "foreboding", "menacing", "sinister"]
+  },
+  {
+    id: 111,
+    word: "Prudent",
+    definition: "Acting with or showing care and thought for the future",
+    example: "It was prudent to save money for emergencies.",
+    level: "basic",
+    mnemonic: "Sounds like 'prudence' - using good judgment.",
+    synonyms: ["careful", "cautious", "sensible", "judicious"]
+  },
+  {
+    id: 112,
+    word: "Jubilant",
+    definition: "Feeling or expressing great happiness and triumph",
+    example: "The team was jubilant after winning the championship.",
+    level: "intermediate",
+    mnemonic: "Think 'jubilee' - a celebration with joy.",
+    synonyms: ["overjoyed", "elated", "ecstatic", "delighted"]
+  },
+  {
+    id: 113,
+    word: "Frugal",
+    definition: "Sparing or economical with regard to money or food",
+    example: "His frugal lifestyle allowed him to retire early.",
+    level: "basic",
+    mnemonic: "Think 'few-gal' - using just a few things, not wasting.",
+    synonyms: ["economical", "thrifty", "careful", "prudent"]
+  },
+  {
+    id: 114,
+    word: "Indolent",
+    definition: "Wanting to avoid activity or exertion; lazy",
+    example: "His indolent attitude toward work frustrated his colleagues.",
+    level: "advanced",
+    mnemonic: "In-dol-ent - not feeling the 'dol' (pain) of effort.",
+    synonyms: ["lazy", "idle", "slothful", "inactive"]
+  },
+  {
+    id: 115,
+    word: "Affable",
+    definition: "Friendly, good-natured, and easy to talk to",
+    example: "The affable host made everyone feel welcome at the party.",
+    level: "intermediate",
+    mnemonic: "Think 'I'm able to talk freely' - friendly and approachable.",
+    synonyms: ["friendly", "amiable", "genial", "pleasant"]
+  },
+  {
+    id: 116,
+    word: "Pernicious",
+    definition: "Having a harmful effect, especially in a gradual or subtle way",
+    example: "The pernicious effects of the propaganda were not immediately obvious.",
+    level: "advanced",
+    mnemonic: "Per-nicious - sounds like 'per-vicious' - thoroughly harmful.",
+    synonyms: ["harmful", "destructive", "injurious", "malignant"]
+  },
+  {
+    id: 117,
+    word: "Insipid",
+    definition: "Lacking flavor; bland or uninteresting",
+    example: "The critic described the movie as an insipid attempt at comedy.",
+    level: "advanced",
+    mnemonic: "In-sipid - not sippable because it has no taste.",
+    synonyms: ["bland", "tasteless", "flavorless", "dull"]
+  },
+  {
+    id: 118,
+    word: "Astute",
+    definition: "Having or showing an ability to accurately assess situations",
+    example: "Her astute observation helped solve the complex problem.",
+    level: "intermediate",
+    mnemonic: "A-stute - 'a' + 'acute' - sharp mind.",
+    synonyms: ["shrewd", "perceptive", "insightful", "clever"]
+  },
+  {
+    id: 119,
+    word: "Belligerent",
+    definition: "Hostile and aggressive",
+    example: "His belligerent attitude made it impossible to have a reasonable discussion.",
+    level: "intermediate",
+    mnemonic: "Bell-igerent - ringing the bell for a fight.",
+    synonyms: ["aggressive", "hostile", "antagonistic", "combative"]
+  },
+  {
+    id: 120,
+    word: "Buoyant",
+    definition: "Cheerful and optimistic",
+    example: "Despite the setbacks, she maintained a buoyant outlook.",
+    level: "basic",
+    mnemonic: "Buoy-ant - like a buoy that stays up on water, never sinking.",
+    synonyms: ["cheerful", "optimistic", "upbeat", "positive"]
+  },
+  {
+    id: 121,
+    word: "Vacillate",
+    definition: "Waver between different opinions or actions; be indecisive",
+    example: "He vacillated between accepting the job offer and staying at his current position.",
+    level: "advanced",
+    mnemonic: "Va-cillate - sounds like 'oscillate' - moving back and forth in decisions.",
+    synonyms: ["waver", "fluctuate", "hesitate", "dither"]
+  },
+  {
+    id: 122,
+    word: "Tranquil",
+    definition: "Free from disturbance; calm",
+    example: "The tranquil lake reflected the mountains perfectly.",
+    level: "basic",
+    mnemonic: "Tran-quil - think 'quite still'.",
+    synonyms: ["peaceful", "calm", "serene", "quiet"]
+  },
+  {
+    id: 123,
+    word: "Scrupulous",
+    definition: "Diligent, thorough, and extremely attentive to details",
+    example: "The scrupulous accountant double-checked every figure.",
+    level: "advanced",
+    mnemonic: "Scruple-ous - full of scruples or careful attention.",
+    synonyms: ["meticulous", "careful", "thorough", "conscientious"]
+  },
+  {
+    id: 124,
+    word: "Docile",
+    definition: "Ready to accept control or instruction; submissive",
+    example: "The docile horse was perfect for a beginner rider.",
+    level: "intermediate",
+    mnemonic: "Do-cile - sounds like 'do seal' - sealing a promise to do as told.",
+    synonyms: ["compliant", "obedient", "amenable", "tractable"]
+  },
+  {
+    id: 125,
+    word: "Eclectic",
+    definition: "Deriving ideas, style, or taste from a broad and diverse range of sources",
+    example: "The restaurant features an eclectic menu with dishes from around the world.",
+    level: "intermediate",
+    mnemonic: "E-clectic - selecting from various sources.",
+    synonyms: ["diverse", "varied", "wide-ranging", "mixed"]
+  },
+  {
+    id: 126,
+    word: "Redundant",
+    definition: "Not or no longer needed or useful; superfluous",
+    example: "The extra parts were redundant once the machine was upgraded.",
+    level: "basic",
+    mnemonic: "Re-dund-ant - repeating something already 'done'.",
+    synonyms: ["superfluous", "unnecessary", "excess", "surplus"]
+  },
+  {
+    id: 127,
+    word: "Repudiate",
+    definition: "Refuse to accept or be associated with",
+    example: "She repudiated the accusations made against her.",
+    level: "advanced",
+    mnemonic: "Re-pudi-ate - pushing back (re) against something publicly (pudiate).",
+    synonyms: ["reject", "deny", "disown", "renounce"]
+  },
+  {
+    id: 128,
+    word: "Lucrative",
+    definition: "Producing a great deal of profit",
+    example: "The investment proved to be highly lucrative.",
+    level: "basic",
+    mnemonic: "Lucr-ative - from Latin 'lucrum' meaning gain or profit.",
+    synonyms: ["profitable", "rewarding", "gainful", "remunerative"]
+  },
+  {
+    id: 129,
+    word: "Facetious",
+    definition: "Treating serious issues with deliberately inappropriate humor",
+    example: "His facetious remarks during the meeting were not appreciated.",
+    level: "advanced",
+    mnemonic: "Face-tious - putting on a funny face at an inappropriate time.",
+    synonyms: ["flippant", "frivolous", "joking", "humorous"]
+  },
+  {
+    id: 130,
+    word: "Stoic",
+    definition: "A person who can endure pain or hardship without showing feelings or complaining",
+    example: "He remained stoic throughout the difficult medical procedure.",
+    level: "intermediate",
+    mnemonic: "Think of ancient Stoic philosophers who practiced emotional restraint.",
+    synonyms: ["impassive", "unemotional", "phlegmatic", "composed"]
+  },
+  {
+    id: 131,
+    word: "Magnify",
+    definition: "Make (something) appear larger than it is",
+    example: "The microscope magnified the cells so they could be studied.",
+    level: "basic",
+    mnemonic: "Magni-fy - from 'magnus' (large) + 'facere' (to make).",
+    synonyms: ["enlarge", "amplify", "increase", "boost"]
+  },
+  {
+    id: 132,
+    word: "Verbose",
+    definition: "Using or containing more words than needed",
+    example: "His verbose emails often contained unnecessary details.",
+    level: "intermediate",
+    mnemonic: "Verb-ose - full of verbs and other words.",
+    synonyms: ["wordy", "long-winded", "prolix", "garrulous"]
+  },
+  {
+    id: 133,
+    word: "Spontaneous",
+    definition: "Performed or occurring without premeditation or external stimulus",
+    example: "Their spontaneous decision to take a road trip led to a memorable adventure.",
+    level: "basic",
+    mnemonic: "Spont-aneous - happening on the spot.",
+    synonyms: ["unplanned", "impulsive", "impromptu", "unrehearsed"]
+  },
+  {
+    id: 134,
+    word: "Reverent",
+    definition: "Feeling or showing deep and solemn respect",
+    example: "The visitors maintained a reverent silence in the ancient cathedral.",
+    level: "intermediate",
+    mnemonic: "Revere-ent - full of reverence or deep respect.",
+    synonyms: ["respectful", "awed", "admiring", "venerating"]
+  },
+  {
+    id: 135,
+    word: "Sagacious",
+    definition: "Having or showing keen mental discernment and good judgment",
+    example: "The sagacious investor predicted market trends accurately.",
+    level: "advanced",
+    mnemonic: "Saga-cious - having wisdom worthy of being told in sagas.",
+    synonyms: ["wise", "insightful", "astute", "shrewd"]
+  },
+  {
+    id: 136,
+    word: "Vibrant",
+    definition: "Full of energy and enthusiasm",
+    example: "The vibrant colors of the painting immediately caught everyone's attention.",
+    level: "basic",
+    mnemonic: "Vibr-ant - continuously vibrating with energy.",
+    synonyms: ["energetic", "lively", "dynamic", "spirited"]
+  },
+  {
+    id: 137,
+    word: "Innocuous",
+    definition: "Not harmful or offensive",
+    example: "His innocuous comment was misinterpreted as an insult.",
+    level: "advanced",
+    mnemonic: "In-nocu-ous - not nocuous (harmful).",
+    synonyms: ["harmless", "inoffensive", "benign", "safe"]
+  },
+  {
+    id: 138,
+    word: "Egalitarian",
+    definition: "Believing in or based on the principle that all people are equal and deserve equal rights and opportunities",
+    example: "The egalitarian society provided equal education for all citizens.",
+    level: "advanced",
+    mnemonic: "Egalit-arian - from French 'égalité' meaning equality.",
+    synonyms: ["equal", "fair", "impartial", "democratic"]
+  },
+  {
+    id: 139,
+    word: "Charismatic",
+    definition: "Exercising a compelling charm that inspires devotion in others",
+    example: "The charismatic leader motivated the entire team to achieve their goals.",
+    level: "intermediate",
+    mnemonic: "Charis-matic - from 'charisma', a special magnetic charm or appeal.",
+    synonyms: ["magnetic", "compelling", "captivating", "influential"]
+  },
+  {
+    id: 140,
+    word: "Succinct",
+    definition: "Briefly and clearly expressed",
+    example: "Her succinct explanation helped everyone understand the complex concept.",
+    level: "intermediate",
+    mnemonic: "Suc-cinct - think 'cinched up' or tightly bound.",
+    synonyms: ["concise", "brief", "compact", "terse"]
+  },
+  {
+    id: 141,
+    word: "Monotonous",
+    definition: "Dull, tedious, and repetitious; lacking in variety and interest",
+    example: "His monotonous voice made it difficult for the audience to stay awake during the lecture.",
+    level: "basic",
+    mnemonic: "Mono-tonous - having only one (mono) tone.",
+    synonyms: ["repetitive", "tedious", "boring", "dull"]
+  },
+  {
+    id: 142,
+    word: "Vivacious",
+    definition: "Attractively lively and animated",
+    example: "Her vivacious personality made her the center of attention at parties.",
+    level: "intermediate",
+    mnemonic: "Viv-acious - from 'vivere' (to live) - full of life.",
+    synonyms: ["lively", "animated", "spirited", "bubbly"]
+  },
+  {
+    id: 143,
+    word: "Resilient",
+    definition: "Able to withstand or recover quickly from difficult conditions",
+    example: "The resilient community quickly rebuilt after the natural disaster.",
+    level: "basic",
+    mnemonic: "Re-silient - bouncing back from being pushed down.",
+    synonyms: ["tough", "adaptable", "hardy", "buoyant"]
+  },
+  {
+    id: 144,
+    word: "Fastidious",
+    definition: "Very attentive to and concerned about accuracy and detail",
+    example: "The fastidious chef insisted that every dish be perfectly presented.",
+    level: "advanced",
+    mnemonic: "Fast-idious - quick to notice what's disgusting or not right.",
+    synonyms: ["meticulous", "particular", "fussy", "scrupulous"]
+  },
+  {
+    id: 145,
+    word: "Poignant",
+    definition: "Evoking a keen sense of sadness or regret",
+    example: "The movie's poignant ending left many viewers in tears.",
+    level: "advanced",
+    mnemonic: "Poign-ant - from French 'poindre' (to prick) - something that pricks your emotions.",
+    synonyms: ["touching", "moving", "emotional", "affecting"]
+  },
+  {
+    id: 146,
+    word: "Genuine",
+    definition: "Truly what something is said to be; authentic",
+    example: "His genuine concern for others made him a beloved teacher.",
+    level: "basic",
+    mnemonic: "Gen-uine - truly coming from one's genes or nature.",
+    synonyms: ["authentic", "real", "sincere", "honest"]
+  },
+  {
+    id: 147,
+    word: "Meticulous",
+    definition: "Showing great attention to detail; very careful and precise",
+    example: "The meticulous craftsman spent hours perfecting each piece.",
+    level: "intermediate",
+    mnemonic: "Met-iculous - meeting the smallest details with great care.",
+    synonyms: ["thorough", "careful", "precise", "painstaking"]
+  },
+  {
+    id: 148,
+    word: "Tenacious",
+    definition: "Tending to keep a firm hold of something; clinging or adhering closely",
+    example: "Her tenacious pursuit of her goals eventually led to success.",
+    level: "intermediate",
+    mnemonic: "Ten-acious - holding on with the strength of ten people.",
+    synonyms: ["persistent", "determined", "stubborn", "resolute"]
+  },
+  {
+    id: 149,
+    word: "Eloquent",
+    definition: "Fluent or persuasive in speaking or writing",
+    example: "The eloquent speaker moved the audience to tears with her powerful words.",
+    level: "intermediate",
+    mnemonic: "Elo-quent - elegant in how they speak.",
+    synonyms: ["articulate", "expressive", "fluent", "persuasive"]
+  },
+  {
+    id: 150,
+    word: "Empathetic",
+    definition: "Showing an ability to understand and share the feelings of another",
+    example: "The empathetic counselor truly understood what her clients were going through.",
+    level: "basic",
+    mnemonic: "Em-pathetic - feeling the path that another person walks.",
+    synonyms: ["compassionate", "understanding", "sensitive", "sympathetic"]
+  }
+];
+
+export const getWordById = (id: number): Word | undefined => {
+  return words.find(word => word.id === id);
+};
