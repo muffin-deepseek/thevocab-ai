@@ -19,7 +19,7 @@ const LevelFilter: React.FC = () => {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Levels</SelectItem>
-          <SelectItem value="nurture">Nurture (9th-10th Grade)</SelectItem>
+          <SelectItem value="nurture">Nurture (High School)</SelectItem>
           <SelectItem value="basic">Basic</SelectItem>
           <SelectItem value="intermediate">Intermediate</SelectItem>
           <SelectItem value="advanced">Advanced</SelectItem>
