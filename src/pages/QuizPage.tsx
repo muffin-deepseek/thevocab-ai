@@ -34,10 +34,12 @@ const QuizPage: React.FC = () => {
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
   const [quizWords, setQuizWords] = useState<Word[]>([]);
+  // Add a flag to prevent regeneration during an active quiz
+  const [quizActive, setQuizActive] = useState(false);
 
-  // Generate new quiz when filtered words change
+  // Generate new quiz only when filteredWords change AND not during an active quiz
   useEffect(() => {
-    if (filteredWords.length >= 4) {
+    if (filteredWords.length >= 4 && !quizActive && quizStatus !== 'completed') {
       generateQuiz();
     }
   }, [filteredWords]);
@@ -46,6 +48,7 @@ const QuizPage: React.FC = () => {
   useEffect(() => {
     if (questions.length > 0 && quizStatus === 'active' && currentQuestionIndex === 0) {
       setStartTime(new Date());
+      setQuizActive(true); // Set active when quiz starts
     }
   }, [questions, quizStatus, currentQuestionIndex]);
 
@@ -121,10 +124,12 @@ const QuizPage: React.FC = () => {
       // Quiz completed
       setQuizStatus('completed');
       setEndTime(new Date());
+      setQuizActive(false); // Reset flag when quiz completes
     }
   };
 
   const restartQuiz = () => {
+    setQuizActive(false); // Reset flag to allow a new quiz
     generateQuiz();
   };
 

@@ -22,8 +22,8 @@ const QuizResults: React.FC<QuizResultsProps> = ({
 }) => {
   // Generate conversation examples for the words in the quiz
   const generateConversationExamples = () => {
-    // Take up to 10 words from the quiz
-    const wordsToUse = quizWords.slice(0, 10);
+    // Use all available quiz words
+    const wordsToUse = quizWords;
     
     return wordsToUse.map(word => {
       const wordInSentence = word.word.charAt(0).toLowerCase() + word.word.slice(1);
@@ -90,7 +90,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({
               Practice using these words from the quiz in your daily conversations:
             </p>
             
-            <div className="space-y-4 text-left">
+            <div className="space-y-4 text-left max-h-80 overflow-y-auto">
               {conversationExamples.map((item, index) => (
                 <div key={index} className="p-3 bg-gray-50 rounded-md">
                   <p className="font-medium text-vocab-primary">{item.word.word}</p>
