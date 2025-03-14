@@ -15,6 +15,8 @@ interface WordCardProps {
 
 export const getLevelColor = (level: WordLevel): string => {
   switch (level) {
+    case 'nurture':
+      return 'bg-teal-500 text-white';
     case 'basic':
       return 'bg-vocab-basic text-white';
     case 'intermediate':
