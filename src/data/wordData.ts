@@ -1,3 +1,4 @@
+
 export type WordLevel = 'nurture' | 'basic' | 'intermediate' | 'advanced';
 
 export interface Word {
@@ -711,4 +712,24 @@ export const words: Word[] = [
   {
     id: 79,
     word: "Nebulous",
-    definition: "In the form of a cloud or
+    definition: "In the form of a cloud or haze; vague or ill-defined",
+    example: "The witness gave a nebulous account of what happened that night.",
+    level: "intermediate",
+    mnemonic: "Think 'nebula' - a cloud-like formation in space, similarly unclear and hazy.",
+    synonyms: ["vague", "hazy", "unclear", "indistinct"]
+  },
+  {
+    id: 80,
+    word: "Circumlocution",
+    definition: "The use of many words where fewer would do, especially in a deliberate attempt to be vague or evasive",
+    example: "His response was a masterpiece of circumlocution that never actually answered the question.",
+    level: "advanced",
+    mnemonic: "Circum (around) + locution (speech) - talking around a subject instead of directly.",
+    synonyms: ["verbosity", "wordiness", "indirectness", "evasiveness"]
+  }
+];
+
+// Helper function to get a word by ID
+export function getWordById(id: number): Word | undefined {
+  return words.find(word => word.id === id);
+}
