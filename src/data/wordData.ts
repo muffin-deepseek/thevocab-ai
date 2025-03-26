@@ -507,7 +507,7 @@ export const words: Word[] = [
     definition: "Very weak or slight; insubstantial",
     example: "The evidence supporting their theory was tenuous at best.",
     level: "advanced",
-    mnemonic: "Ten-u-ous - like something so thin it could only hold ten molecules.",
+    mnemonic: "Ten-u-ous - like something so thin it could only hold ten molecules.\",",
     synonyms: ["slight", "weak", "fragile", "flimsy"]
   },
   {
@@ -711,4 +711,4 @@ export const words: Word[] = [
   {
     id: 79,
     word: "Nebulous",
-    definition: "In the form of a cloud or haze
+    definition: "In the form
