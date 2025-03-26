@@ -494,7 +494,7 @@ export const words: Word[] = [
   },
   {
     id: 55,
- word: "Egregious",
+    word: "Egregious",
     definition: "Outstandingly bad; shocking",
     example: "The report detailed the company's egregious violations of safety regulations.",
     level: "advanced",
@@ -712,293 +712,293 @@ export const words: Word[] = [
     id: 79,
     word: "Nebulous",
     definition: "In the form of a cloud or haze; vague or ill-defined",
-    example: "The strategy was rather nebulous and lacked specific details.",
+    example: "The witness gave a nebulous account of what happened that night.",
     level: "intermediate",
-    mnemonic: "Shares roots with 'nebula' - a cloud-like formation in space.",
+    mnemonic: "Think 'nebula' - a cloud-like formation in space, similarly unclear and hazy.",
     synonyms: ["vague", "hazy", "unclear", "indistinct"]
   },
   {
     id: 80,
-    word: "Pernicious",
-    definition: "Having a harmful effect, especially in a gradual or subtle way",
-    example: "The pernicious effects of the drug were not immediately apparent.",
+    word: "Circumlocution",
+    definition: "The use of many words where fewer would do, especially in a deliberate attempt to be vague or evasive",
+    example: "His response was a masterpiece of circumlocution that never actually answered the question.",
     level: "advanced",
-    mnemonic: "Per-nicious sounds like 'per-vicious' - something persistently vicious/harmful.",
-    synonyms: ["harmful", "destructive", "damaging", "injurious"]
+    mnemonic: "Circum (around) + locution (speech) - talking around a subject instead of directly.",
+    synonyms: ["verbosity", "wordiness", "indirectness", "evasiveness"]
   },
   {
     id: 81,
-    word: "Esoteric",
-    definition: "Intended for or likely to be understood by only a small number of people with specialized knowledge",
-    example: "The professor's lecture was filled with esoteric terms that confused most students.",
-    level: "advanced",
-    mnemonic: "E-so-teric - 'so terrific' that only a few can appreciate it.",
-    synonyms: ["obscure", "abstruse", "arcane", "cryptic"]
+    word: "Accomplish",
+    definition: "To succeed in doing something; to complete successfully",
+    example: "She accomplished her goal of earning straight A's this semester.",
+    level: "nurture",
+    mnemonic: "Think 'a-complete-ish' - to finish something completely.",
+    synonyms: ["achieve", "complete", "fulfill", "attain"]
   },
   {
     id: 82,
-    word: "Prolific",
-    definition: "Producing much fruit or foliage or many offspring; producing many works, results, etc.",
-    example: "She is a prolific writer who has published over thirty novels.",
-    level: "intermediate",
-    mnemonic: "Pro-lific - like 'pro' at creating a 'litany' of things.",
-    synonyms: ["productive", "fertile", "fruitful", "abundant"]
+    word: "Beneficial",
+    definition: "Resulting in good; favorable or helpful",
+    example: "Regular exercise is beneficial for both physical and mental health.",
+    level: "nurture",
+    mnemonic: "Bene (good) + ficial (from 'facial') - something that puts a good face on things.",
+    synonyms: ["helpful", "useful", "advantageous", "valuable"]
   },
   {
     id: 83,
-    word: "Auspicious",
-    definition: "Conducive to success; favorable",
-    example: "They chose an auspicious date for the wedding based on astrological predictions.",
-    level: "intermediate",
-    mnemonic: "Au-spicious - sounds like 'awesome specious' - something appearing awesome for your prospects.",
-    synonyms: ["favorable", "promising", "propitious", "lucky"]
+    word: "Clarify",
+    definition: "To make something clearer or easier to understand",
+    example: "The teacher tried to clarify the concept with an example from everyday life.",
+    level: "nurture",
+    mnemonic: "Think 'clear-ify' - to make clear.",
+    synonyms: ["explain", "simplify", "elucidate", "illuminate"]
   },
   {
     id: 84,
-    word: "Pejorative",
-    definition: "Expressing contempt or disapproval",
-    example: "He used pejorative language when referring to his opponents.",
-    level: "advanced",
-    mnemonic: "P-e-jor-ative - think 'poor rating' - giving something a poor evaluation.",
-    synonyms: ["derogatory", "disparaging", "negative", "belittling"]
+    word: "Distinguish",
+    definition: "To recognize or treat as different",
+    example: "It's important to distinguish between fact and opinion when reading news articles.",
+    level: "nurture",
+    mnemonic: "Dis-tin-guish - like giving different 'tints' to things so you can tell them apart.",
+    synonyms: ["differentiate", "tell apart", "discriminate", "separate"]
   },
   {
     id: 85,
-    word: "Verbose",
-    definition: "Using or containing more words than needed",
-    example: "His verbose writing style made the essay twice as long as necessary.",
-    level: "intermediate",
-    mnemonic: "Verb-ose - full of verbs and other words.",
-    synonyms: ["wordy", "long-winded", "prolix", "garrulous"]
+    word: "Elaborate",
+    definition: "To develop or present something in further detail",
+    example: "Could you elaborate on your proposal for the science project?",
+    level: "nurture",
+    mnemonic: "E-labor-ate - it takes extra labor to add more details.",
+    synonyms: ["explain", "develop", "expand", "detail"]
   },
   {
     id: 86,
-    word: "Recalcitrant",
-    definition: "Having an obstinately uncooperative attitude toward authority",
-    example: "The recalcitrant student refused to follow classroom rules.",
-    level: "advanced",
-    mnemonic: "Re-calcitrant - sounds like 're-calculate-rant' - someone who repeatedly rants against calculations/instructions.",
-    synonyms: ["uncooperative", "obstinate", "stubborn", "defiant"]
+    word: "Fundamental",
+    definition: "Forming a necessary base or core; of central importance",
+    example: "Understanding the fundamental principles of math will help you in more advanced courses.",
+    level: "nurture",
+    mnemonic: "Funda-mental - the mental foundation of something.",
+    synonyms: ["basic", "essential", "core", "primary"]
   },
   {
     id: 87,
-    word: "Prudent",
-    definition: "Acting with or showing care and thought for the future",
-    example: "It was prudent to save some money for emergencies.",
-    level: "intermediate",
-    mnemonic: "Pru-dent - sounds like 'prove-dentist' - like a dentist proving they're careful.",
-    synonyms: ["careful", "cautious", "sensible", "judicious"]
+    word: "Generate",
+    definition: "To produce or create",
+    example: "The brainstorming session helped generate many creative ideas.",
+    level: "nurture",
+    mnemonic: "Gen-erate - think of a generator creating electricity.",
+    synonyms: ["produce", "create", "cause", "bring about"]
   },
   {
     id: 88,
-    word: "Parsimonious",
-    definition: "Unwilling to spend money or use resources; stingy",
-    example: "The parsimonious businessman never left tips at restaurants.",
-    level: "advanced",
-    mnemonic: "Parsi-monious - 'parse money' - carefully parsing/limiting how much money is spent.",
-    synonyms: ["stingy", "miserly", "frugal", "thrifty"]
+    word: "Hesitate",
+    definition: "To pause before saying or doing something, often due to uncertainty",
+    example: "She hesitated before answering the difficult question.",
+    level: "nurture",
+    mnemonic: "He-sit-ate - like sitting for a moment before acting.",
+    synonyms: ["pause", "delay", "waver", "be unsure"]
   },
   {
     id: 89,
-    word: "Insipid",
-    definition: "Lacking flavor or zest; dull",
-    example: "The insipid soup needed more seasoning.",
-    level: "advanced",
-    mnemonic: "In-sipid - not sippable because it lacks taste.",
-    synonyms: ["bland", "tasteless", "flavorless", "dull"]
+    word: "Investigate",
+    definition: "To examine, study, or inquire into systematically",
+    example: "The detective will investigate the mysterious disappearance.",
+    level: "nurture",
+    mnemonic: "In-vestig-ate - like following the vestiges (traces) of something.",
+    synonyms: ["examine", "research", "explore", "analyze"]
   },
   {
     id: 90,
-    word: "Stoic",
-    definition: "A person who can endure pain or hardship without showing feelings or complaining",
-    example: "He remained stoic throughout the difficult medical procedure.",
-    level: "intermediate",
-    mnemonic: "Sto-ic - like a stone ('sto-ne') person, hard and unmoving emotionally.",
-    synonyms: ["impassive", "composed", "unemotional", "calm"]
+    word: "Justify",
+    definition: "To show or prove to be right or reasonable",
+    example: "How can you justify spending so much money on a smartphone?",
+    level: "nurture",
+    mnemonic: "Just-ify - to make something seem just (fair or right).",
+    synonyms: ["explain", "defend", "validate", "support"]
   },
   {
     id: 91,
-    word: "Panacea",
-    definition: "A solution or remedy for all difficulties or diseases",
-    example: "Exercise is not a panacea for all health problems.",
-    level: "advanced",
-    mnemonic: "Pan-acea - 'pan' meaning all, a cure for all.",
-    synonyms: ["cure-all", "remedy", "elixir", "solution"]
+    word: "Maintain",
+    definition: "To keep in a certain state, position, or activity",
+    example: "It's important to maintain good study habits throughout the school year.",
+    level: "nurture",
+    mnemonic: "Main-tain - to hold onto the main things.",
+    synonyms: ["keep", "sustain", "continue", "preserve"]
   },
   {
     id: 92,
-    word: "Debilitating",
-    definition: "Making someone very weak and infirm",
-    example: "He suffered from a debilitating illness that left him unable to work.",
-    level: "intermediate",
-    mnemonic: "De-bili-tating - reducing your ability to pay the bills (because you're weakened).",
-    synonyms: ["weakening", "enfeebling", "enervating", "draining"]
+    word: "Numerous",
+    definition: "Great in number; many",
+    example: "There are numerous reasons why we should recycle.",
+    level: "nurture",
+    mnemonic: "Numer-ous - related to numbers, specifically large ones.",
+    synonyms: ["many", "multiple", "several", "countless"]
   },
   {
     id: 93,
-    word: "Corroborate",
-    definition: "Confirm or give support to a statement, theory, or finding",
-    example: "The witness was able to corroborate the suspect's alibi.",
-    level: "intermediate",
-    mnemonic: "Co-rob-orate - like co-robots working together to support a fact.",
-    synonyms: ["confirm", "verify", "substantiate", "validate"]
+    word: "Observe",
+    definition: "To watch carefully; to notice",
+    example: "Scientists observe animal behavior to learn about their habits.",
+    level: "nurture",
+    mnemonic: "Ob-serve - serving your eyes by using them to watch.",
+    synonyms: ["watch", "notice", "see", "monitor"]
   },
   {
     id: 94,
-    word: "Ineffable",
-    definition: "Too great or extreme to be expressed in words",
-    example: "The beauty of the sunset was ineffable.",
-    level: "advanced",
-    mnemonic: "In-effable - not 'F-able' or capable of being put into F-words or any words.",
-    synonyms: ["indescribable", "unspeakable", "inexpressible", "unutterable"]
+    word: "Persist",
+    definition: "To continue firmly or obstinately despite obstacles",
+    example: "If you persist in your efforts, you'll eventually succeed.",
+    level: "nurture",
+    mnemonic: "Per-sist - to keep sitting through challenges.",
+    synonyms: ["continue", "endure", "persevere", "keep going"]
   },
   {
     id: 95,
-    word: "Desultory",
-    definition: "Lacking a plan, purpose, or enthusiasm",
-    example: "He made a few desultory attempts to find a job.",
-    level: "advanced",
-    mnemonic: "De-sultory - sounds like 'salty' - jumping around without direction like salt scattered.",
-    synonyms: ["random", "disconnected", "aimless", "haphazard"]
+    word: "Relevant",
+    definition: "Closely connected or appropriate to what is being done or considered",
+    example: "Make sure the information you include in your essay is relevant to the topic.",
+    level: "nurture",
+    mnemonic: "Re-relevant - relates back to what's important.",
+    synonyms: ["applicable", "pertinent", "related", "appropriate"]
   },
   {
     id: 96,
-    word: "Cogent",
-    definition: "Clear, logical, and convincing",
-    example: "She presented a cogent argument that persuaded even her critics.",
-    level: "advanced",
-    mnemonic: "Co-gent - like an agent helping cognition or understanding.",
-    synonyms: ["convincing", "compelling", "persuasive", "well-argued"]
+    word: "Significant",
+    definition: "Important; of consequence",
+    example: "His contribution to the project was significant.",
+    level: "nurture",
+    mnemonic: "Sign-ificant - something that signals importance.",
+    synonyms: ["important", "major", "considerable", "noteworthy"]
   },
   {
     id: 97,
-    word: "Laconic",
-    definition: "Using very few words",
-    example: "His laconic reply of 'Maybe' told us nothing about his real intentions.",
-    level: "advanced",
-    mnemonic: "Lack-onic - lacking words, like it's lacking electronic text.",
-    synonyms: ["terse", "concise", "brief", "succinct"]
+    word: "Transformation",
+    definition: "A thorough or dramatic change in form or appearance",
+    example: "The caterpillar's transformation into a butterfly is amazing.",
+    level: "nurture",
+    mnemonic: "Trans-form-ation - the action of changing form completely.",
+    synonyms: ["change", "alteration", "modification", "conversion"]
   },
   {
     id: 98,
-    word: "Quixotic",
-    definition: "Exceedingly idealistic; unrealistic and impractical",
-    example: "His quixotic plan to solve world hunger in a year was admirable but unrealistic.",
-    level: "advanced",
-    mnemonic: "Quix-otic - from Don Quixote, who had unrealistic, idealistic adventures.",
-    synonyms: ["idealistic", "unrealistic", "impractical", "romantic"]
+    word: "Ultimate",
+    definition: "Being or happening at the end of a process; final",
+    example: "The ultimate goal is to graduate with honors.",
+    level: "nurture",
+    mnemonic: "Ulti-mate - like the ultimate mate or partner at the end.",
+    synonyms: ["final", "last", "eventual", "concluding"]
   },
   {
     id: 99,
-    word: "Aplomb",
-    definition: "Self-confidence or assurance, especially when in a demanding situation",
-    example: "She handled the difficult interview questions with aplomb.",
-    level: "advanced",
-    mnemonic: "Ap-lomb - think 'a plumb line' - staying perfectly vertical/balanced under pressure.",
-    synonyms: ["poise", "confidence", "self-assurance", "composure"]
+    word: "Versatile",
+    definition: "Able to adapt or be adapted to many different functions or activities",
+    example: "A smartphone is a versatile device that can be used for many purposes.",
+    level: "nurture",
+    mnemonic: "Versa-tile - can be turned (verse) in many directions like a tile.",
+    synonyms: ["adaptable", "flexible", "all-around", "multifunctional"]
   },
   {
     id: 100,
-    word: "Mercurial",
-    definition: "Subject to sudden or unpredictable changes of mood or mind",
-    example: "His mercurial temperament made him difficult to work with.",
-    level: "advanced",
-    mnemonic: "Named after Mercury, which changes direction quickly in the sky.",
-    synonyms: ["volatile", "capricious", "fickle", "unpredictable"]
+    word: "Crucial",
+    definition: "Decisive or critical, especially in the success or failure of something",
+    example: "Getting enough sleep is crucial for doing well on exams.",
+    level: "nurture",
+    mnemonic: "Think of a 'crux' - a critical point or essential part.",
+    synonyms: ["essential", "important", "critical", "vital"]
   },
   {
     id: 101,
-    word: "Sagacious",
-    definition: "Having or showing keen mental discernment and good judgment",
-    example: "The sagacious old woman gave advice that proved invaluable.",
-    level: "advanced",
-    mnemonic: "Sag-acious - sounds like 'sage-icious' - having the wisdom of a sage.",
-    synonyms: ["wise", "shrewd", "insightful", "astute"]
+    word: "Adequate",
+    definition: "Satisfactory or acceptable in quality or quantity",
+    example: "The food was adequate but not exceptional.",
+    level: "nurture",
+    mnemonic: "Ad-equate - equals what is needed.",
+    synonyms: ["sufficient", "enough", "satisfactory", "suitable"]
   },
   {
     id: 102,
-    word: "Grandiloquent",
-    definition: "Pompous or extravagant in language, style, or manner",
-    example: "The politician's grandiloquent speech failed to impress the voters.",
-    level: "advanced",
-    mnemonic: "Grandi-loquent - 'grand-eloquent' - overly grand in speech.",
-    synonyms: ["pompous", "bombastic", "verbose", "high-flown"]
+    word: "Perspective",
+    definition: "A particular attitude toward or way of regarding something",
+    example: "Traveling abroad gave her a new perspective on her own culture.",
+    level: "nurture",
+    mnemonic: "Per-spect-ive - looking through (spect) something thoroughly.",
+    synonyms: ["viewpoint", "outlook", "standpoint", "view"]
   },
   {
     id: 103,
-    word: "Enervate",
-    definition: "Cause someone to feel drained of energy or vitality",
-    example: "The hot, humid weather enervated everyone in the city.",
-    level: "advanced",
-    mnemonic: "E-nervate - like removing the nerve or energy from someone.",
-    synonyms: ["weaken", "debilitate", "exhaust", "drain"]
+    word: "Comprehend",
+    definition: "To grasp mentally; understand",
+    example: "It took me a while to comprehend the complex math problem.",
+    level: "nurture",
+    mnemonic: "Com-pre-hend - to pre-hend (hold) something completely in your mind.",
+    synonyms: ["understand", "grasp", "follow", "get"]
   },
   {
     id: 104,
-    word: "Supercilious",
-    definition: "Behaving or looking as though one thinks one is superior to others",
-    example: "The supercilious waiter looked down his nose at customers who ordered the cheaper wines.",
-    level: "advanced",
-    mnemonic: "Super-cilious - 'super silly' to think you're above (super) others, raising eyebrows (cilia) at them.",
-    synonyms: ["arrogant", "haughty", "condescending", "disdainful"]
+    word: "Emphasize",
+    definition: "To give special importance or value to something in speaking or writing",
+    example: "The teacher emphasized the importance of reading the assigned chapters.",
+    level: "nurture",
+    mnemonic: "Em-pha-size - making the phase (aspect) bigger in size/importance.",
+    synonyms: ["stress", "highlight", "accentuate", "underscore"]
   },
   {
     id: 105,
-    word: "Precipitous",
-    definition: "Dangerously high or steep; done suddenly and without careful consideration",
-    example: "The mountain path had a precipitous drop on one side.",
-    level: "advanced",
-    mnemonic: "Pre-cipit-ous - like being on a precipice (steep cliff) or acting without precaution.",
-    synonyms: ["steep", "sheer", "abrupt", "hasty"]
+    word: "Reluctant",
+    definition: "Unwilling and hesitant; disinclined",
+    example: "She was reluctant to speak in front of the class.",
+    level: "nurture",
+    mnemonic: "Re-luct-ant - fighting against (reluct) something you have to do.",
+    synonyms: ["unwilling", "hesitant", "disinclined", "averse"]
   },
   {
     id: 106,
-    word: "Acquiesce",
-    definition: "Accept something reluctantly but without protest",
-    example: "She acquiesced to her parents' demand that she study medicine.",
-    level: "intermediate",
-    mnemonic: "Ac-qui-esce - sounds like 'agree yes' - quietly agreeing.",
-    synonyms: ["comply", "consent", "agree", "accept"]
+    word: "Circumstance",
+    definition: "A fact or condition connected with or relevant to an event or action",
+    example: "Under the circumstances, I think you made the right decision.",
+    level: "nurture",
+    mnemonic: "Circum-stance - the stance (position) around (circum) something.",
+    synonyms: ["situation", "condition", "position", "state of affairs"]
   },
   {
     id: 107,
-    word: "Magnanimous",
-    definition: "Very generous or forgiving, especially toward a rival or less powerful person",
-    example: "It was magnanimous of her to help the colleague who had tried to undermine her.",
-    level: "advanced",
-    mnemonic: "Magna-nimous - 'magna' (great) + 'animus' (spirit) - having a great, generous spirit.",
-    synonyms: ["generous", "charitable", "benevolent", "big-hearted"]
+    word: "Contribute",
+    definition: "To give something, especially money, in order to provide or achieve something together with other people",
+    example: "Everyone should contribute to the group project.",
+    level: "nurture",
+    mnemonic: "Con-tribute - like a tribe coming together to give something.",
+    synonyms: ["donate", "give", "provide", "add"]
   },
   {
     id: 108,
-    word: "Cacophony",
-    definition: "A harsh, discordant mixture of sounds",
-    example: "The cacophony of car horns and construction work made it impossible to concentrate.",
-    level: "intermediate",
-    mnemonic: "Caco (bad) + phony (sound) - bad sounding.",
-    synonyms: ["discord", "dissonance", "noise", "din"]
+    word: "Diminish",
+    definition: "To make or become less",
+    example: "The pain gradually diminished over time.",
+    level: "nurture",
+    mnemonic: "Di-min-ish - making something mini or smaller.",
+    synonyms: ["decrease", "reduce", "lessen", "decline"]
   },
   {
     id: 109,
-    word: "Elucidate",
-    definition: "Make clear; explain",
-    example: "The professor elucidated the complex theory with helpful diagrams.",
-    level: "advanced",
-    mnemonic: "E-lucid-ate - making something lucid (clear) or bringing light to it.",
-    synonyms: ["explain", "clarify", "illuminate", "make clear"]
+    word: "Abundant",
+    definition: "Existing or available in large quantities; plentiful",
+    example: "There was abundant food at the celebration.",
+    level: "nurture",
+    mnemonic: "A-bund-ant - like having bundles and bundles of something.",
+    synonyms: ["plentiful", "copious", "ample", "numerous"]
   },
   {
     id: 110,
-    word: "Obfuscate",
-    definition: "Make obscure, unclear, or unintelligible",
-    example: "The politician deliberately obfuscated the issue to avoid taking a clear position.",
-    level: "advanced",
-    mnemonic: "Ob-fusc-ate - like creating a 'fuss' to cover up or confuse things.",
-    synonyms: ["confuse", "complicate", "muddle", "blur"]
+    word: "Conflict",
+    definition: "A serious disagreement or argument",
+    example: "The conflict between the two students was resolved through mediation.",
+    level: "nurture",
+    mnemonic: "Con-flict - when people flick (hit) against each other.",
+    synonyms: ["disagreement", "dispute", "argument", "clash"]
   }
 ];
 
 // Helper function to get a word by ID
-export const getWordById = (id: number): Word | undefined => {
+export function getWordById(id: number): Word | undefined {
   return words.find(word => word.id === id);
-};
+}
