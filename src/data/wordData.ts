@@ -120,7 +120,7 @@ export const words: Word[] = [
   },
   {
     id: 13,
-    word: "Anomaly",
+ word: "Anomaly",
     definition: "Something that deviates from what is standard, normal, or expected",
     example: "The results showed an anomaly that required further investigation.",
     level: "basic",
@@ -507,7 +507,7 @@ export const words: Word[] = [
     definition: "Very weak or slight; insubstantial",
     example: "The evidence supporting their theory was tenuous at best.",
     level: "advanced",
-    mnemonic: "Ten-u-ous - like something so thin it could only hold ten molecules.\",",
+    mnemonic: "Ten-u-ous - like something so thin it could only hold ten molecules.",
     synonyms: ["slight", "weak", "fragile", "flimsy"]
   },
   {
@@ -711,4 +711,10 @@ export const words: Word[] = [
   {
     id: 79,
     word: "Nebulous",
-    definition: "In the form
+    definition: "In the form of a cloud or haze; vague or ill-defined",
+    example: "The strategy was rather nebulous and lacked specific details.",
+    level: "intermediate",
+    mnemonic: "Shares roots with 'nebula' - a cloud-like formation in space.",
+    synonyms: ["vague", "hazy", "unclear", "indistinct"]
+  }
+];
