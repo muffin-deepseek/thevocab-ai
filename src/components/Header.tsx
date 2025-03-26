@@ -5,6 +5,7 @@ import { Book, BookOpen, Home, List, Search, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useVocab } from '@/contexts/VocabContext';
 import { Progress } from '@/components/ui/progress';
+import UserProfile from '@/components/UserProfile';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -19,14 +20,18 @@ const Header: React.FC = () => {
             <h1 className="text-2xl font-bold text-vocab-primary">GRE Vocabulary Builder</h1>
           </div>
           
-          <div className="w-full md:w-64">
-            <div className="flex flex-col">
-              <div className="flex justify-between text-sm mb-1">
-                <span>Progress</span>
-                <span>{progress.learned}/{progress.total} words</span>
+          <div className="flex items-center gap-4">
+            <div className="w-full md:w-64">
+              <div className="flex flex-col">
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Progress</span>
+                  <span>{progress.learned}/{progress.total} words</span>
+                </div>
+                <Progress value={progress.percentage} className="h-2" />
               </div>
-              <Progress value={progress.percentage} className="h-2" />
             </div>
+            
+            <UserProfile />
           </div>
         </div>
         

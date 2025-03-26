@@ -66,6 +66,36 @@ export type Database = {
         }
         Relationships: []
       }
+      volunteers: {
+        Row: {
+          address: string
+          created_at: string
+          email: string
+          id: string
+          instagram: string | null
+          name: string
+          phone: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          email: string
+          id?: string
+          instagram?: string | null
+          name: string
+          phone: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          email?: string
+          id?: string
+          instagram?: string | null
+          name?: string
+          phone?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
