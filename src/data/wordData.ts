@@ -1,3 +1,4 @@
+
 export type WordLevel = 'nurture' | 'basic' | 'intermediate' | 'advanced';
 
 export interface Word {
@@ -718,3 +719,8 @@ export const words: Word[] = [
     synonyms: ["vague", "hazy", "unclear", "indistinct"]
   }
 ];
+
+// Helper function to get a word by ID
+export const getWordById = (id: number): Word | undefined => {
+  return words.find(word => word.id === id);
+};
