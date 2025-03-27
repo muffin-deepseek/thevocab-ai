@@ -995,6 +995,186 @@ export const words: Word[] = [
     level: "nurture",
     mnemonic: "Con-flict - when people flick (hit) against each other.",
     synonyms: ["disagreement", "dispute", "argument", "clash"]
+  },
+  {
+    id: 111,
+    word: "Whimsical",
+    definition: "Playfully quaint or fanciful, especially in an appealing and amusing way",
+    example: "The garden was decorated with whimsical sculptures of fairy-tale creatures.",
+    level: "intermediate",
+    mnemonic: "Think 'whim-cycle' - cycling through various whims or fancies.",
+    synonyms: ["fanciful", "playful", "capricious", "quaint"]
+  },
+  {
+    id: 112,
+    word: "Cultivate",
+    definition: "To prepare and work on land in order to grow crops; to develop or improve by education or training",
+    example: "She cultivated strong relationships with her business partners.",
+    level: "basic",
+    mnemonic: "Think 'culture-vate' - actively growing a culture or something valuable.",
+    synonyms: ["develop", "nurture", "foster", "improve"]
+  },
+  {
+    id: 113,
+    word: "Dexterity",
+    definition: "Skill in performing tasks, especially with the hands",
+    example: "The surgeon's dexterity was impressive during the complex operation.",
+    level: "intermediate",
+    mnemonic: "Sounds like 'dex-territory' - the territory of being dexterous or skilled.",
+    synonyms: ["skill", "adroitness", "agility", "nimbleness"]
+  },
+  {
+    id: 114,
+    word: "Ponder",
+    definition: "To think about something carefully, especially before making a decision",
+    example: "She sat by the window to ponder her next career move.",
+    level: "nurture",
+    mnemonic: "Pond-er - like looking deeply into a pond, reflecting on thoughts.",
+    synonyms: ["consider", "contemplate", "reflect", "meditate"]
+  },
+  {
+    id: 115,
+    word: "Ludicrous",
+    definition: "So foolish, unreasonable, or out of place as to be amusing",
+    example: "His excuse for being late was absolutely ludicrous.",
+    level: "advanced",
+    mnemonic: "Sounds like 'ludic' (playful) + 'ridiculous' - playfully ridiculous.",
+    synonyms: ["absurd", "ridiculous", "preposterous", "comical"]
+  },
+  {
+    id: 116,
+    word: "Savvy",
+    definition: "Practical knowledge and ability; shrewdness",
+    example: "Her business savvy helped the company increase profits.",
+    level: "basic",
+    mnemonic: "Sounds like 'save-y' - knowledge that saves you from making mistakes.",
+    synonyms: ["knowledgeable", "shrewd", "astute", "smart"]
+  },
+  {
+    id: 117,
+    word: "Inquisitive",
+    definition: "Having or showing an interest in learning things; curious",
+    example: "The inquisitive child asked endless questions about how things work.",
+    level: "nurture",
+    mnemonic: "In-quiz-itive - always quizzing or asking questions.",
+    synonyms: ["curious", "questioning", "inquiring", "interested"]
+  },
+  {
+    id: 118,
+    word: "Serendipity",
+    definition: "The occurrence of happy or beneficial events by chance",
+    example: "Finding her dream job was a case of pure serendipity.",
+    level: "advanced",
+    mnemonic: "Serene-dip-ity - like dipping into serenity unexpectedly.",
+    synonyms: ["chance", "luck", "fortuity", "fortune"]
+  },
+  {
+    id: 119,
+    word: "Integrity",
+    definition: "The quality of being honest and having strong moral principles",
+    example: "Her integrity was never questioned throughout her political career.",
+    level: "basic",
+    mnemonic: "In-tegrity - the inner strength that holds you together morally.",
+    synonyms: ["honesty", "morality", "ethics", "virtue"]
+  },
+  {
+    id: 120,
+    word: "Exemplary",
+    definition: "Serving as a desirable model; outstanding",
+    example: "Her exemplary work earned her a promotion.",
+    level: "intermediate",
+    mnemonic: "Exam-plary - like getting an A+ on every exam; a perfect example.",
+    synonyms: ["model", "ideal", "perfect", "excellent"]
+  },
+  {
+    id: 121,
+    word: "Collaborate",
+    definition: "To work jointly with others on an activity or project",
+    example: "The two companies collaborated to develop the new technology.",
+    level: "nurture",
+    mnemonic: "Co-labor-ate - eating up the work together with others.",
+    synonyms: ["cooperate", "work together", "join forces", "team up"]
+  },
+  {
+    id: 122,
+    word: "Juxtapose",
+    definition: "To place or deal with close together for contrasting effect",
+    example: "The documentary juxtaposes scenes from wealthy and poor neighborhoods.",
+    level: "advanced",
+    mnemonic: "Juxta-pose - positioning things next to each other to compare.",
+    synonyms: ["contrast", "compare", "place side by side", "set against"]
+  },
+  {
+    id: 123,
+    word: "Captivate",
+    definition: "To attract and hold the interest and attention of",
+    example: "The speaker captivated the audience with her inspiring story.",
+    level: "intermediate",
+    mnemonic: "Captive-ate - making someone a captive of your charm or interest.",
+    synonyms: ["enchant", "charm", "enthrall", "fascinate"]
+  },
+  {
+    id: 124,
+    word: "Gratitude",
+    definition: "The quality of being thankful; readiness to show appreciation",
+    example: "She expressed her gratitude for their help during the difficult time.",
+    level: "nurture",
+    mnemonic: "Grat-attitude - having an attitude of thankfulness.",
+    synonyms: ["thankfulness", "appreciation", "gratefulness", "recognition"]
+  },
+  {
+    id: 125,
+    word: "Serene",
+    definition: "Calm, peaceful, and untroubled",
+    example: "The serene lake reflected the mountains like a mirror.",
+    level: "basic",
+    mnemonic: "Se-rene - like a clean, clear (rinsed) state of mind.",
+    synonyms: ["peaceful", "calm", "tranquil", "placid"]
+  },
+  {
+    id: 126,
+    word: "Quandary",
+    definition: "A state of perplexity or uncertainty over what to do in a difficult situation",
+    example: "She found herself in a quandary when offered two excellent job opportunities.",
+    level: "advanced",
+    mnemonic: "Quan-dairy - like having too many quantitative options in your daily life.",
+    synonyms: ["dilemma", "predicament", "puzzle", "difficulty"]
+  },
+  {
+    id: 127,
+    word: "Innovative",
+    definition: "Featuring new methods, ideas, or products",
+    example: "The company is known for its innovative approach to problem-solving.",
+    level: "intermediate",
+    mnemonic: "In-nova-tive - bringing in nova (new) things.",
+    synonyms: ["creative", "original", "groundbreaking", "inventive"]
+  },
+  {
+    id: 128,
+    word: "Exemplify",
+    definition: "To be a typical example of; to embody",
+    example: "Her actions exemplify the values of the organization.",
+    level: "intermediate",
+    mnemonic: "Example-ify - to make something into an example.",
+    synonyms: ["represent", "embody", "personify", "epitomize"]
+  },
+  {
+    id: 129,
+    word: "Harmony",
+    definition: "The state of being in agreement or concord",
+    example: "The team worked in harmony to complete the project on time.",
+    level: "nurture",
+    mnemonic: "Harm-ony - no one is harmed when everyone works together.",
+    synonyms: ["accord", "agreement", "unity", "peace"]
+  },
+  {
+    id: 130,
+    word: "Recalcitrant",
+    definition: "Having an obstinately uncooperative attitude toward authority",
+    example: "The recalcitrant child refused to follow the teacher's instructions.",
+    level: "advanced",
+    mnemonic: "Re-calci-trant - repeatedly (re) stepping (trant) on calcium (hard ground) - hard to move.",
+    synonyms: ["defiant", "obstinate", "stubborn", "uncooperative"]
   }
 ];
 
