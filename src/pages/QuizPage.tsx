@@ -21,12 +21,6 @@ interface QuizQuestion {
   correctIndex: number;
 }
 
-interface IncorrectAnswer {
-  question: Word;
-  selectedAnswer: Word;
-  correctAnswer: Word;
-}
-
 const QuizPage: React.FC = () => {
   const { filteredWords, toggleLearned } = useVocab();
   const { toast } = useToast();
@@ -42,19 +36,6 @@ const QuizPage: React.FC = () => {
   const [quizWords, setQuizWords] = useState<Word[]>([]);
   // Add a flag to prevent regeneration during an active quiz
   const [quizActive, setQuizActive] = useState(false);
-  // Track incorrect answers
-  const [incorrectAnswers, setIncorrectAnswers] = useState<IncorrectAnswer[]>([]);
-  // Track streak
-  const [streak, setStreak] = useState(() => {
-    const savedStreak = localStorage.getItem('quizStreak');
-    return savedStreak ? parseInt(savedStreak, 10) : 0;
-  });
-  
-  // Time of last successful quiz completion
-  const [lastQuizTime, setLastQuizTime] = useState(() => {
-    const savedTime = localStorage.getItem('lastQuizTime');
-    return savedTime ? parseInt(savedTime, 10) : 0;
-  });
 
   // Generate new quiz only when filteredWords change AND not during an active quiz
   useEffect(() => {
@@ -118,7 +99,6 @@ const QuizPage: React.FC = () => {
     setSelectedOption(null);
     setStartTime(new Date());
     setEndTime(null);
-    setIncorrectAnswers([]);
   };
 
   const handleAnswer = (optionIndex: number) => {
@@ -127,23 +107,11 @@ const QuizPage: React.FC = () => {
     setSelectedOption(optionIndex);
     setIsAnswered(true);
     
-    const currentQuestion = questions[currentQuestionIndex];
-    const isCorrect = optionIndex === currentQuestion.correctIndex;
-    
+    const isCorrect = optionIndex === questions[currentQuestionIndex].correctIndex;
     if (isCorrect) {
       setScore(score + 1);
       // Mark word as learned if answer is correct
-      toggleLearned(currentQuestion.questionWord.id);
-    } else {
-      // Store incorrect answer for review
-      setIncorrectAnswers(prev => [
-        ...prev, 
-        {
-          question: currentQuestion.questionWord,
-          selectedAnswer: currentQuestion.options[optionIndex],
-          correctAnswer: currentQuestion.options[currentQuestion.correctIndex]
-        }
-      ]);
+      toggleLearned(questions[currentQuestionIndex].questionWord.id);
     }
   };
 
@@ -154,55 +122,9 @@ const QuizPage: React.FC = () => {
       setSelectedOption(null);
     } else {
       // Quiz completed
-      const now = new Date();
-      setEndTime(now);
       setQuizStatus('completed');
+      setEndTime(new Date());
       setQuizActive(false); // Reset flag when quiz completes
-      
-      // Update streak logic
-      const nowTime = now.getTime();
-      const oneDayMs = 24 * 60 * 60 * 1000;
-      const passRate = score / questions.length;
-      
-      if (passRate >= 0.7) { // 70% or better to maintain streak
-        // Check if this is within streak timeframe (1 day)
-        if (nowTime - lastQuizTime < oneDayMs * 2) { // allow a bit of leeway
-          setStreak(prev => prev + 1);
-        } else {
-          // It's been too long, reset streak but count this one
-          setStreak(1);
-        }
-        
-        // Update last successful quiz time
-        setLastQuizTime(nowTime);
-        localStorage.setItem('lastQuizTime', nowTime.toString());
-      } else if (passRate < 0.5) { // Below 50% breaks streak
-        setStreak(0);
-      }
-      
-      // Save streak to localStorage
-      localStorage.setItem('quizStreak', streak.toString());
-      
-      // Show appropriate toast based on performance
-      if (passRate >= 0.8) {
-        toast({
-          title: "Excellent work!",
-          description: `You scored ${score} out of ${questions.length}!`,
-          variant: "default"
-        });
-      } else if (passRate >= 0.6) {
-        toast({
-          title: "Good job!",
-          description: `You scored ${score} out of ${questions.length}. Keep practicing!`,
-          variant: "default"
-        });
-      } else {
-        toast({
-          title: "Keep practicing",
-          description: `You scored ${score} out of ${questions.length}. Review your mistakes and try again.`,
-          variant: "default"
-        });
-      }
     }
   };
 
@@ -361,8 +283,6 @@ const QuizPage: React.FC = () => {
                 timeTaken={calculateTimeTaken()}
                 quizWords={quizWords}
                 onRestartQuiz={restartQuiz}
-                incorrectAnswers={incorrectAnswers}
-                streak={streak}
               />
             ) : (
               <Card className="shadow-sm">
