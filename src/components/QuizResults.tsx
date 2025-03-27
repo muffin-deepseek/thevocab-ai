@@ -1,9 +1,10 @@
 
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Eye, EyeOff, Trophy } from 'lucide-react';
 import { Word } from '@/data/wordData';
+import { Badge } from '@/components/ui/badge';
 
 interface QuizResultsProps {
   score: number;
@@ -11,6 +12,8 @@ interface QuizResultsProps {
   timeTaken: string;
   quizWords: Word[];
   onRestartQuiz: () => void;
+  incorrectAnswers?: { question: Word; selectedAnswer: Word; correctAnswer: Word }[];
+  streak?: number;
 }
 
 const QuizResults: React.FC<QuizResultsProps> = ({
@@ -18,8 +21,12 @@ const QuizResults: React.FC<QuizResultsProps> = ({
   totalQuestions,
   timeTaken,
   quizWords,
-  onRestartQuiz
+  onRestartQuiz,
+  incorrectAnswers = [],
+  streak = 0
 }) => {
+  const [showIncorrectAnswers, setShowIncorrectAnswers] = useState(false);
+  
   // Generate conversation examples for the words in the quiz
   const generateConversationExamples = () => {
     // Use all available quiz words
@@ -78,10 +85,60 @@ const QuizResults: React.FC<QuizResultsProps> = ({
             </div>
           </div>
           
-          <Button onClick={onRestartQuiz} className="w-full mb-8">
+          {/* Streak display */}
+          {streak > 0 && (
+            <div className="bg-amber-50 p-4 rounded-md mb-6 flex items-center justify-center gap-2">
+              <Trophy className="h-5 w-5 text-amber-500" />
+              <p className="text-amber-700 font-medium">Current streak: {streak} quizzes</p>
+            </div>
+          )}
+          
+          <Button onClick={onRestartQuiz} className="w-full mb-6">
             <RefreshCw className="h-4 w-4 mr-2" />
             Start New Quiz
           </Button>
+          
+          {/* Incorrect Answers Section */}
+          {incorrectAnswers.length > 0 && (
+            <div className="mt-8 border-t pt-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold">Review Missed Questions</h3>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setShowIncorrectAnswers(!showIncorrectAnswers)}
+                >
+                  {showIncorrectAnswers ? (
+                    <><EyeOff className="h-4 w-4 mr-2" /> Hide</>
+                  ) : (
+                    <><Eye className="h-4 w-4 mr-2" /> Show</>
+                  )}
+                </Button>
+              </div>
+              
+              {showIncorrectAnswers && (
+                <div className="space-y-4 text-left">
+                  {incorrectAnswers.map((item, index) => (
+                    <div key={index} className="p-3 bg-red-50 border border-red-100 rounded-md">
+                      <p className="font-medium">
+                        {item.question.word}: <span className="font-normal">{item.question.definition}</span>
+                      </p>
+                      <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
+                        <div className="p-2 bg-red-100 rounded">
+                          <Badge variant="outline" className="bg-red-50 text-red-700 mb-1">Your answer</Badge>
+                          <p>{item.selectedAnswer.word}</p>
+                        </div>
+                        <div className="p-2 bg-green-100 rounded">
+                          <Badge variant="outline" className="bg-green-50 text-green-700 mb-1">Correct answer</Badge>
+                          <p>{item.correctAnswer.word}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
           
           {/* Conversation Examples Section */}
           <div className="mt-8 border-t pt-6">
