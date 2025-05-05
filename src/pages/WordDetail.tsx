@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -7,6 +8,7 @@ import ConversationExamples from '@/components/ConversationExamples';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import VoiceButton from '@/components/VoiceButton';
 
 const WordDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -47,6 +49,11 @@ const WordDetail: React.FC = () => {
         </div>
         
         <div className="max-w-2xl mx-auto">
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-3xl font-bold">{word.word}</h1>
+            <VoiceButton text={word.word} size="default" />
+          </div>
+          
           <WordCard word={word} showFullDetails={true} />
           
           <ConversationExamples word={word} />
@@ -58,8 +65,9 @@ const WordDetail: React.FC = () => {
                   <h3 className="text-lg font-semibold mb-3">Similar Words</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {word.synonyms.map((synonym, index) => (
-                      <div key={index} className="bg-gray-50 p-3 rounded-md">
-                        {synonym}
+                      <div key={index} className="bg-gray-50 p-3 rounded-md flex justify-between items-center">
+                        <span>{synonym}</span>
+                        <VoiceButton text={synonym} size="sm" />
                       </div>
                     ))}
                   </div>

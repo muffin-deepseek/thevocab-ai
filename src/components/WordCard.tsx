@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +6,7 @@ import { Star, BookOpen, Check } from 'lucide-react';
 import { Word, WordLevel } from '@/data/wordData';
 import { useVocab } from '@/contexts/VocabContext';
 import { cn } from '@/lib/utils';
+import VoiceButton from './VoiceButton';
 
 interface WordCardProps {
   word: Word;
@@ -46,14 +46,17 @@ const WordCard: React.FC<WordCardProps> = ({ word, showFullDetails = false }) =>
               {word.level}
             </Badge>
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(favorite ? "text-yellow-500" : "text-gray-400")}
-            onClick={() => toggleFavorite(word.id)}
-          >
-            <Star className="h-5 w-5" fill={favorite ? "currentColor" : "none"} />
-          </Button>
+          <div className="flex">
+            <VoiceButton text={word.word} />
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(favorite ? "text-yellow-500" : "text-gray-400")}
+              onClick={() => toggleFavorite(word.id)}
+            >
+              <Star className="h-5 w-5" fill={favorite ? "currentColor" : "none"} />
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="flex-grow">

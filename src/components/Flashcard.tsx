@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Star, Check, VolumeX, Volume2, MessageCircle } from 'lucide-react';
+import { Star, Check, MessageCircle } from 'lucide-react';
 import { Word } from '@/data/wordData';
 import { useVocab } from '@/contexts/VocabContext';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { getLevelColor } from './WordCard';
+import VoiceButton from './VoiceButton';
 
 interface FlashcardProps {
   word: Word;
@@ -23,12 +24,6 @@ const Flashcard: React.FC<FlashcardProps> = ({ word, onNext, onPrevious }) => {
 
   const handleFlip = () => {
     setFlipped(!flipped);
-  };
-
-  const playPronunciation = () => {
-    // In a real app, this would use a text-to-speech API or pre-recorded audio
-    const utterance = new SpeechSynthesisUtterance(word.word);
-    window.speechSynthesis.speak(utterance);
   };
 
   // Generate a simple conversation example
@@ -122,13 +117,7 @@ const Flashcard: React.FC<FlashcardProps> = ({ word, onNext, onPrevious }) => {
             <Star className="h-5 w-5" fill={favorite ? "currentColor" : "none"} />
           </Button>
           
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={playPronunciation}
-          >
-            <Volume2 className="h-5 w-5" />
-          </Button>
+          <VoiceButton text={word.word} />
           
           <Button
             variant="ghost"
