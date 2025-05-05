@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Star, BookOpen, Check } from 'lucide-react';
@@ -15,13 +16,13 @@ interface WordCardProps {
 export const getLevelColor = (level: WordLevel): string => {
   switch (level) {
     case 'nurture':
-      return 'bg-gray-300 text-gray-800';
+      return 'bg-teal-500 text-white';
     case 'basic':
-      return 'bg-gray-400 text-gray-800';
+      return 'bg-vocab-basic text-white';
     case 'intermediate':
-      return 'bg-gray-500 text-white';
+      return 'bg-vocab-intermediate text-white';
     case 'advanced':
-      return 'bg-gray-700 text-white';
+      return 'bg-vocab-advanced text-white';
     default:
       return 'bg-gray-500 text-white';
   }
@@ -33,82 +34,81 @@ const WordCard: React.FC<WordCardProps> = ({ word, showFullDetails = false }) =>
   const learned = isLearned(word.id);
 
   return (
-    <div className={cn(
-      "word-grid-item transition-colors duration-100",
-      learned && "bg-gray-100"
+    <Card className={cn(
+      "transition-all duration-200 h-full flex flex-col",
+      learned && "border-green-300 bg-green-50"
     )}>
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="text-base font-medium">{word.word}</h3>
-        <Button
-          variant="ghost"
-          size="icon"
-          className={cn("h-7 w-7", favorite ? "text-black" : "text-gray-400")}
-          onClick={() => toggleFavorite(word.id)}
-        >
-          <Star className="h-4 w-4" fill={favorite ? "currentColor" : "none"} />
-        </Button>
-      </div>
-      
-      {!showFullDetails ? (
-        <div className="text-sm text-gray-700 mb-2 truncate">{word.definition}</div>
-      ) : (
-        <div className="mb-4">
-          <p className="text-sm text-gray-700 mb-2">{word.definition}</p>
-          
-          {word.example && (
-            <p className="text-xs text-gray-600 italic mt-2">{word.example}</p>
-          )}
-          
-          {word.mnemonic && (
-            <div className="mt-3 bg-gray-100 p-2 rounded-sm">
-              <p className="text-xs"><span className="font-medium">Memory Aid:</span> {word.mnemonic}</p>
-            </div>
-          )}
-          
-          {word.synonyms && word.synonyms.length > 0 && (
-            <div className="mt-3">
-              <p className="text-xs font-medium">Synonyms:</p>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {word.synonyms.map((synonym, index) => (
-                  <Badge key={index} variant="outline" className="text-xs bg-gray-100">
-                    {synonym}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          )}
+      <CardHeader className="pb-2">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="text-lg font-bold">{word.word}</h3>
+            <Badge className={cn("mt-1", getLevelColor(word.level))}>
+              {word.level}
+            </Badge>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn(favorite ? "text-yellow-500" : "text-gray-400")}
+            onClick={() => toggleFavorite(word.id)}
+          >
+            <Star className="h-5 w-5" fill={favorite ? "currentColor" : "none"} />
+          </Button>
         </div>
-      )}
-      
-      <div className="flex justify-between items-center pt-2 border-t border-gray-200">
-        <Badge className={cn("text-xs", getLevelColor(word.level))}>
-          {word.level}
-        </Badge>
+      </CardHeader>
+      <CardContent className="flex-grow">
+        <p className="text-gray-700 mb-2"><span className="font-semibold">Definition:</span> {word.definition}</p>
         
-        {!showFullDetails ? (
-          <Button asChild size="sm" variant="ghost" className="text-xs p-0 h-6">
-            <a href={`/word/${word.id}`} className="flex items-center">
-              <BookOpen className="h-3 w-3 mr-1" />
+        {(showFullDetails || word.example) && (
+          <p className="text-gray-600 text-sm mt-2 italic"><span className="font-semibold not-italic">Example:</span> {word.example}</p>
+        )}
+        
+        {showFullDetails && word.mnemonic && (
+          <div className="mt-3 bg-vocab-light p-2 rounded-md">
+            <p className="text-sm"><span className="font-semibold">Memory Aid:</span> {word.mnemonic}</p>
+          </div>
+        )}
+        
+        {showFullDetails && word.synonyms && word.synonyms.length > 0 && (
+          <div className="mt-3">
+            <p className="text-sm font-semibold">Synonyms:</p>
+            <div className="flex flex-wrap gap-1 mt-1">
+              {word.synonyms.map((synonym, index) => (
+                <Badge key={index} variant="outline" className="bg-gray-100">
+                  {synonym}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+      </CardContent>
+      <CardFooter className="pt-2 justify-between">
+        <Button
+          variant="outline"
+          size="sm"
+          className={cn(
+            "text-xs",
+            learned ? "bg-green-100 border-green-300" : ""
+          )}
+          onClick={() => toggleLearned(word.id)}
+        >
+          <Check className={cn(
+            "h-4 w-4 mr-1", 
+            learned ? "text-green-600" : "text-gray-400"
+          )} />
+          {learned ? "Learned" : "Mark as Learned"}
+        </Button>
+        
+        {!showFullDetails && (
+          <Button asChild size="sm" variant="ghost" className="text-xs">
+            <a href={`/word/${word.id}`}>
+              <BookOpen className="h-4 w-4 mr-1" />
               Details
             </a>
           </Button>
-        ) : (
-          <Button
-            variant="ghost"
-            size="sm"
-            className={cn(
-              "text-xs p-0 h-6",
-              learned ? "text-black" : "text-gray-500"
-            )}
-            onClick={() => toggleLearned(word.id)}
-          >
-            <Check className={cn("h-3 w-3 mr-1")} 
-              fill={learned ? "currentColor" : "none"} />
-            {learned ? "Learned" : "Mark Learned"}
-          </Button>
         )}
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
 };
 

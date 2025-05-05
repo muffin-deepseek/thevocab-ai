@@ -63,19 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated color palette for vocab app with Kindle-like design
+				// Updated color palette based on the image for vocabulary app
 				vocab: {
-					primary: '#000000', // Black
-					secondary: '#555555', // Dark gray
-					light: '#F7F7F7', // Light gray
-					dark: '#222222', // Darker gray
-					success: '#555555', // Dark gray for success
-					error: '#555555', // Dark gray for error
-					warning: '#555555', // Dark gray for warning
-					info: '#555555', // Dark gray for info
-					basic: '#555555', // Gray for basic
-					intermediate: '#333333', // Darker gray for intermediate
-					advanced: '#000000', // Black for advanced
+					primary: '#6B46C1', // Deep purple
+					secondary: '#9F7AEA', // Medium purple
+					light: '#E9D8FD', // Light purple
+					dark: '#322659', // Dark purple
+					success: '#38B2AC', // Teal
+					error: '#F56565', // Pink
+					warning: '#ED8936', // Orange
+					info: '#4299E1', // Blue
+					basic: '#4A5568', // Gray
+					intermediate: '#6B46C1', // Purple
+					advanced: '#F56565', // Pink
 				}
 			},
 			borderRadius: {
@@ -109,6 +109,9 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'flip': 'flip 1s cubic-bezier(0, 0, 0.2, 1)'
+			},
+			backgroundImage: {
+				'dotted-pattern': "url('/lovable-uploads/bdee1483-9321-4c99-b06a-6c59fd115bb4.png')"
 			}
 		}
 	},

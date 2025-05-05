@@ -34,9 +34,10 @@ const QuizPage: React.FC = () => {
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
   const [quizWords, setQuizWords] = useState<Word[]>([]);
+  // Add a flag to prevent regeneration during an active quiz
   const [quizActive, setQuizActive] = useState(false);
 
-  // Generate new quiz when filteredWords change AND not during an active quiz
+  // Generate new quiz only when filteredWords change AND not during an active quiz
   useEffect(() => {
     if (filteredWords.length >= 4 && !quizActive && quizStatus !== 'completed') {
       generateQuiz();
@@ -47,7 +48,7 @@ const QuizPage: React.FC = () => {
   useEffect(() => {
     if (questions.length > 0 && quizStatus === 'active' && currentQuestionIndex === 0) {
       setStartTime(new Date());
-      setQuizActive(true);
+      setQuizActive(true); // Set active when quiz starts
     }
   }, [questions, quizStatus, currentQuestionIndex]);
 
@@ -149,173 +150,172 @@ const QuizPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="container mx-auto px-4 py-6">
-        <div className="kindle-container">
-          <div className="kindle-header border-b border-gray-300">
-            <h2 className="text-base font-medium">Practice Quiz</h2>
-            
-            <div className="flex gap-2">
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={() => setQuizMode('definition')}
-                disabled={quizStatus === 'active' && currentQuestionIndex > 0}
-                className={`text-xs border-gray-300 ${quizMode === 'definition' ? 'bg-gray-100' : 'bg-white'}`}
-              >
-                Word → Definition
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={() => setQuizMode('word')}
-                disabled={quizStatus === 'active' && currentQuestionIndex > 0}
-                className={`text-xs border-gray-300 ${quizMode === 'word' ? 'bg-gray-100' : 'bg-white'}`}
-              >
-                Definition → Word
-              </Button>
-            </div>
-          </div>
+      <main className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+          <h2 className="text-2xl font-bold mb-4 md:mb-0">Practice Quiz</h2>
           
-          <div className="kindle-content">
-            <div className="grid grid-cols-1 gap-4">
-              <div className="space-y-4">
-                <LevelFilter />
-                
-                <Button 
-                  className="w-full bg-gray-900 hover:bg-black text-white"
-                  disabled={filteredWords.length < 4 || (quizStatus === 'active' && currentQuestionIndex > 0)}
-                  onClick={generateQuiz}
-                >
-                  <Zap className="h-4 w-4 mr-2" />
-                  Start New Quiz
-                </Button>
-                
-                {quizStatus === 'active' && questions.length > 0 && (
-                  <div className="border border-gray-300 rounded-sm p-4 bg-white">
-                    <h3 className="text-base font-medium mb-2">Quiz Progress</h3>
+          <div className="flex gap-2">
+            <Button 
+              variant={quizMode === 'definition' ? 'default' : 'outline'} 
+              size="sm" 
+              onClick={() => setQuizMode('definition')}
+              disabled={quizStatus === 'active' && currentQuestionIndex > 0}
+            >
+              Word → Definition
+            </Button>
+            <Button 
+              variant={quizMode === 'word' ? 'default' : 'outline'} 
+              size="sm" 
+              onClick={() => setQuizMode('word')}
+              disabled={quizStatus === 'active' && currentQuestionIndex > 0}
+            >
+              Definition → Word
+            </Button>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="md:col-span-1">
+            <div className="space-y-4">
+              <LevelFilter />
+              
+              <Button 
+                className="w-full"
+                disabled={filteredWords.length < 4 || (quizStatus === 'active' && currentQuestionIndex > 0)}
+                onClick={generateQuiz}
+              >
+                <Zap className="h-4 w-4 mr-2" />
+                Start New Quiz
+              </Button>
+              
+              {quizStatus === 'active' && questions.length > 0 && (
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-lg">Quiz Progress</CardTitle>
+                  </CardHeader>
+                  <CardContent>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span>Question</span>
                         <span>{currentQuestionIndex + 1} of {questions.length}</span>
                       </div>
-                      <div className="w-full bg-gray-200 h-2 rounded-sm">
-                        <div 
-                          className="bg-gray-800 h-2 rounded-sm" 
-                          style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
-                        ></div>
-                      </div>
+                      <Progress 
+                        value={((currentQuestionIndex + 1) / questions.length) * 100} 
+                        className="h-2" 
+                      />
                       
                       <div className="flex justify-between text-sm mt-4">
                         <span>Score</span>
                         <span>{score} / {currentQuestionIndex + (isAnswered ? 1 : 0)}</span>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-              
-              {quizStatus === 'active' && questions.length > 0 ? (
-                <div className="border border-gray-300 rounded-sm bg-white">
-                  <div className="border-b border-gray-300 p-4">
-                    <h3 className="text-base font-medium">
-                      Question {currentQuestionIndex + 1}: 
-                      {quizMode === 'definition' 
-                        ? ` What is the definition of "${currentQuestion.questionWord.word}"?`
-                        : ` Which word means "${currentQuestion.questionWord.definition}"?`}
-                    </h3>
-                  </div>
-                  <div className="p-4">
-                    <RadioGroup value={selectedOption?.toString()} className="space-y-3">
-                      {currentQuestion.options.map((option, index) => (
-                        <div 
-                          key={option.id}
-                          className={`
-                            flex items-center space-x-2 p-3 border rounded-sm
-                            ${isAnswered && index === currentQuestion.correctIndex ? 'bg-gray-100 border-gray-400' : 'border-gray-300'}
-                            ${isAnswered && selectedOption === index && index !== currentQuestion.correctIndex ? 'bg-gray-100 border-gray-400' : ''}
-                            ${!isAnswered ? 'hover:bg-gray-50 cursor-pointer' : ''}
-                          `}
-                          onClick={() => !isAnswered && handleAnswer(index)}
-                        >
-                          <RadioGroupItem 
-                            value={index.toString()} 
-                            id={`option-${index}`}
-                            disabled={isAnswered}
-                            className="flex-shrink-0"
-                          />
-                          <label htmlFor={`option-${index}`} className="flex-grow cursor-pointer">
-                            {quizMode === 'definition' ? option.definition : option.word}
-                          </label>
-                          {isAnswered && index === currentQuestion.correctIndex && (
-                            <Check className="h-5 w-5 text-gray-700" />
-                          )}
-                          {isAnswered && selectedOption === index && index !== currentQuestion.correctIndex && (
-                            <X className="h-5 w-5 text-gray-700" />
-                          )}
-                        </div>
-                      ))}
-                    </RadioGroup>
-                  </div>
-                  <div className="flex justify-between p-4 border-t border-gray-300">
-                    {isAnswered && (
-                      <div>
-                        {selectedOption === currentQuestion.correctIndex ? (
-                          <p className="text-gray-700">Correct!</p>
-                        ) : (
-                          <p className="text-gray-700">Incorrect!</p>
-                        )}
-                      </div>
-                    )}
-                    <Button
-                      onClick={isAnswered ? handleNextQuestion : () => {}}
-                      disabled={!isAnswered}
-                      className="bg-gray-900 hover:bg-black text-white"
-                    >
-                      {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'View Results'}
-                    </Button>
-                  </div>
-                </div>
-              ) : quizStatus === 'completed' ? (
-                <QuizResults 
-                  score={score}
-                  totalQuestions={questions.length}
-                  timeTaken={calculateTimeTaken()}
-                  quizWords={quizWords}
-                  onRestartQuiz={restartQuiz}
-                />
-              ) : (
-                <div className="border border-gray-300 rounded-sm bg-white">
-                  <div className="text-center py-10 px-4">
-                    {filteredWords.length < 4 ? (
-                      <div>
-                        <p className="text-lg text-gray-700 mb-4">
-                          You need at least 4 words to start a quiz.
-                        </p>
-                        <p className="text-gray-500">
-                          Try selecting a different difficulty level or adding more words.
-                        </p>
-                      </div>
-                    ) : (
-                      <div>
-                        <h3 className="text-xl font-medium mb-4">Ready to Test Your Vocabulary?</h3>
-                        <p className="text-gray-600 mb-6">
-                          This quiz will test your knowledge of the selected words. 
-                          Choose the correct definition for each word to improve your vocabulary.
-                        </p>
-                        <Button 
-                          size="lg" 
-                          onClick={generateQuiz}
-                          className="bg-gray-900 hover:bg-black text-white"
-                        >
-                          <Zap className="h-5 w-5 mr-2" />
-                          Start Quiz
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               )}
             </div>
+          </div>
+          
+          <div className="md:col-span-3">
+            {quizStatus === 'active' && questions.length > 0 ? (
+              <Card className="shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-lg">
+                    Question {currentQuestionIndex + 1}: 
+                    {quizMode === 'definition' 
+                      ? ` What is the definition of "${currentQuestion.questionWord.word}"?`
+                      : ` Which word means "${currentQuestion.questionWord.definition}"?`}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <RadioGroup value={selectedOption?.toString()} className="space-y-3">
+                    {currentQuestion.options.map((option, index) => (
+                      <div 
+                        key={option.id}
+                        className={`
+                          flex items-center space-x-2 p-3 rounded-md 
+                          ${isAnswered && index === currentQuestion.correctIndex ? 'bg-green-50 border border-green-200' : ''}
+                          ${isAnswered && selectedOption === index && index !== currentQuestion.correctIndex ? 'bg-red-50 border border-red-200' : ''}
+                          ${!isAnswered ? 'hover:bg-gray-50 cursor-pointer' : ''}
+                        `}
+                        onClick={() => !isAnswered && handleAnswer(index)}
+                      >
+                        <RadioGroupItem 
+                          value={index.toString()} 
+                          id={`option-${index}`}
+                          disabled={isAnswered}
+                          className="flex-shrink-0"
+                        />
+                        <label htmlFor={`option-${index}`} className="flex-grow cursor-pointer">
+                          {quizMode === 'definition' ? option.definition : option.word}
+                        </label>
+                        {isAnswered && index === currentQuestion.correctIndex && (
+                          <Check className="h-5 w-5 text-green-500" />
+                        )}
+                        {isAnswered && selectedOption === index && index !== currentQuestion.correctIndex && (
+                          <X className="h-5 w-5 text-red-500" />
+                        )}
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                  {isAnswered && (
+                    <div>
+                      {selectedOption === currentQuestion.correctIndex ? (
+                        <p className="text-green-600">Correct!</p>
+                      ) : (
+                        <p className="text-red-600">Incorrect!</p>
+                      )}
+                    </div>
+                  )}
+                  <Button
+                    onClick={isAnswered ? handleNextQuestion : () => {}}
+                    disabled={!isAnswered}
+                  >
+                    {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'View Results'}
+                  </Button>
+                </CardFooter>
+              </Card>
+            ) : quizStatus === 'completed' ? (
+              <QuizResults 
+                score={score}
+                totalQuestions={questions.length}
+                timeTaken={calculateTimeTaken()}
+                quizWords={quizWords}
+                onRestartQuiz={restartQuiz}
+              />
+            ) : (
+              <Card className="shadow-sm">
+                <CardContent className="text-center py-12">
+                  {filteredWords.length < 4 ? (
+                    <div>
+                      <p className="text-lg text-gray-700 mb-4">
+                        You need at least 4 words to start a quiz.
+                      </p>
+                      <p className="text-gray-500">
+                        Try selecting a different difficulty level or adding more words.
+                      </p>
+                    </div>
+                  ) : (
+                    <div>
+                      <h3 className="text-xl font-bold mb-4">Ready to Test Your Vocabulary?</h3>
+                      <p className="text-gray-600 mb-6">
+                        This quiz will test your knowledge of the selected words. 
+                        Choose the correct definition for each word to improve your GRE vocabulary.
+                      </p>
+                      <Button 
+                        size="lg" 
+                        onClick={generateQuiz}
+                        className="mx-auto"
+                      >
+                        <Zap className="h-5 w-5 mr-2" />
+                        Start Quiz
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )}
           </div>
         </div>
       </main>
