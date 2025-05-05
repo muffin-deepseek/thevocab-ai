@@ -52,14 +52,14 @@ const QuizResults: React.FC<QuizResultsProps> = ({
   const conversationExamples = generateConversationExamples();
 
   return (
-    <Card className="shadow-sm">
-      <CardHeader>
-        <CardTitle className="text-xl text-center">Quiz Results</CardTitle>
+    <Card className="shadow-md bg-white rounded-2xl border-0">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-2xl text-center text-vocab-primary font-bold">Quiz Results</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="text-center">
-          <div className="mb-6">
-            <div className="text-5xl font-bold text-vocab-primary">
+          <div className="mb-8">
+            <div className="text-6xl font-bold text-vocab-primary">
               {score} / {totalQuestions}
             </div>
             <p className="text-gray-500 mt-2">
@@ -67,34 +67,44 @@ const QuizResults: React.FC<QuizResultsProps> = ({
             </p>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-50 p-4 rounded-md">
-              <p className="text-sm text-gray-500">Time Taken</p>
-              <p className="text-xl font-semibold">{timeTaken}</p>
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="bg-secondary/10 p-5 rounded-xl">
+              <p className="text-sm text-gray-600">Time Taken</p>
+              <p className="text-xl font-semibold text-vocab-primary">{timeTaken}</p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-md">
-              <p className="text-sm text-gray-500">Words Learned</p>
-              <p className="text-xl font-semibold">{score}</p>
+            <div className="bg-secondary/10 p-5 rounded-xl">
+              <p className="text-sm text-gray-600">Words Learned</p>
+              <p className="text-xl font-semibold text-vocab-primary">{score}</p>
             </div>
           </div>
           
-          <Button onClick={onRestartQuiz} className="w-full mb-8">
+          <Button 
+            onClick={onRestartQuiz} 
+            className="w-full mb-10 bg-vocab-primary hover:bg-vocab-primary/90 text-white"
+            size="lg"
+          >
             <RefreshCw className="h-4 w-4 mr-2" />
             Start New Quiz
           </Button>
           
           {/* Conversation Examples Section */}
-          <div className="mt-8 border-t pt-6">
-            <h3 className="text-xl font-semibold mb-4">Use These Words in Conversation</h3>
-            <p className="text-sm text-gray-600 mb-4">
+          <div className="mt-8 border-t pt-8">
+            <h3 className="text-xl font-bold mb-4 text-vocab-primary">Use These Words in Conversation</h3>
+            <p className="text-sm text-gray-600 mb-6">
               Practice using these words from the quiz in your daily conversations:
             </p>
             
-            <div className="space-y-4 text-left max-h-80 overflow-y-auto">
+            <div className="space-y-4 text-left max-h-96 overflow-y-auto pr-2">
               {conversationExamples.map((item, index) => (
-                <div key={index} className="p-3 bg-gray-50 rounded-md">
-                  <p className="font-medium text-vocab-primary">{item.word.word}</p>
-                  <p className="text-sm italic text-gray-700 mt-1">{item.example}</p>
+                <div key={index} className={`p-5 rounded-xl ${
+                  item.word.level === 'basic' ? 'bg-teal-500/10' : 
+                  item.word.level === 'intermediate' ? 'bg-vocab-primary/10' : 'bg-pink-500/10'
+                }`}>
+                  <p className={`font-bold ${
+                    item.word.level === 'basic' ? 'text-teal-600' : 
+                    item.word.level === 'intermediate' ? 'text-vocab-primary' : 'text-pink-600'
+                  }`}>{item.word.word}</p>
+                  <p className="text-gray-700 mt-2">{item.example}</p>
                 </div>
               ))}
             </div>

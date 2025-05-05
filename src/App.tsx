@@ -18,6 +18,9 @@ import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
+// Update page title
+document.title = "Vocabu.AI | Smart Vocabulary Builder";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>

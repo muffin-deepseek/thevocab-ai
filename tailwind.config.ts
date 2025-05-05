@@ -63,19 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for our vocabulary app
+				// Updated color palette based on the image for vocabulary app
 				vocab: {
-					primary: '#8B5CF6',
-					secondary: '#A78BFA',
-					light: '#EDE9FE',
-					dark: '#4C1D95',
-					success: '#10B981',
-					error: '#EF4444',
-					warning: '#F59E0B',
-					info: '#3B82F6',
-					basic: '#6B7280',
-					intermediate: '#8B5CF6',
-					advanced: '#EF4444',
+					primary: '#6B46C1', // Deep purple
+					secondary: '#9F7AEA', // Medium purple
+					light: '#E9D8FD', // Light purple
+					dark: '#322659', // Dark purple
+					success: '#38B2AC', // Teal
+					error: '#F56565', // Pink
+					warning: '#ED8936', // Orange
+					info: '#4299E1', // Blue
+					basic: '#4A5568', // Gray
+					intermediate: '#6B46C1', // Purple
+					advanced: '#F56565', // Pink
 				}
 			},
 			borderRadius: {
@@ -109,6 +109,9 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'flip': 'flip 1s cubic-bezier(0, 0, 0.2, 1)'
+			},
+			backgroundImage: {
+				'dotted-pattern': "url('/lovable-uploads/bdee1483-9321-4c99-b06a-6c59fd115bb4.png')"
 			}
 		}
 	},

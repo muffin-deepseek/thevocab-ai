@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center space-x-2">
             <Book className="h-6 w-6 text-vocab-primary" />
-            <h1 className="text-2xl font-bold text-vocab-primary">GRE Vocabulary Builder</h1>
+            <h1 className="text-2xl font-bold text-vocab-primary">Vocabu.AI</h1>
           </div>
           
           <div className="flex items-center gap-4">
