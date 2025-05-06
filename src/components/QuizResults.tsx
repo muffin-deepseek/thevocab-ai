@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
 import { Word } from '@/data/wordData';
+import VoiceButton from '@/components/VoiceButton';
 
 interface QuizResultsProps {
   score: number;
@@ -100,10 +101,21 @@ const QuizResults: React.FC<QuizResultsProps> = ({
                   item.word.level === 'basic' ? 'bg-teal-500/10' : 
                   item.word.level === 'intermediate' ? 'bg-vocab-primary/10' : 'bg-pink-500/10'
                 }`}>
-                  <p className={`font-bold ${
-                    item.word.level === 'basic' ? 'text-teal-600' : 
-                    item.word.level === 'intermediate' ? 'text-vocab-primary' : 'text-pink-600'
-                  }`}>{item.word.word}</p>
+                  <div className="flex items-center justify-between">
+                    <p className={`font-bold ${
+                      item.word.level === 'basic' ? 'text-teal-600' : 
+                      item.word.level === 'intermediate' ? 'text-vocab-primary' : 'text-pink-600'
+                    }`}>{item.word.word}</p>
+                    <VoiceButton 
+                      text={item.word.word} 
+                      size="sm" 
+                      variant="ghost"
+                      className={
+                        item.word.level === 'basic' ? 'text-teal-600' : 
+                        item.word.level === 'intermediate' ? 'text-vocab-primary' : 'text-pink-600'
+                      }
+                    />
+                  </div>
                   <p className="text-gray-700 mt-2">{item.example}</p>
                 </div>
               ))}
