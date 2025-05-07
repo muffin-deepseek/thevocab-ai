@@ -8,6 +8,14 @@ import * as THREE from 'three';
 // Particles component that creates floating spheres
 const Particles = ({ count = 100, color = "#6B46C1" }) => {
   const particles = useRef<THREE.Group>(null);
+  const meshRefs = useRef<THREE.Mesh[]>([]);
+  
+  // Initialize mesh refs array
+  if (meshRefs.current.length === 0) {
+    meshRefs.current = Array(count).fill(null);
+  }
+  
+  // Generate positions only once
   const positions = React.useMemo(() => {
     const positions = [];
     for (let i = 0; i < count; i++) {
@@ -20,27 +28,39 @@ const Particles = ({ count = 100, color = "#6B46C1" }) => {
   }, [count]);
 
   useFrame((state) => {
-    particles.current?.children.forEach((particle, i) => {
-      // Create a gentle floating effect
-      const time = state.clock.getElapsedTime();
-      const positionData = positions[i];
-      const speed = positionData.speed;
-      
-      particle.position.y += Math.sin(time * speed) * 0.005;
-      particle.position.x += Math.cos(time * speed) * 0.005;
-      
-      // Reset particles if they go too far
-      if (particle.position.y > 20) particle.position.y = -20;
-      if (particle.position.x > 20) particle.position.x = -20;
-    });
+    // Only animate if we have refs
+    if (meshRefs.current) {
+      meshRefs.current.forEach((mesh, i) => {
+        if (mesh && positions[i]) {
+          // Create a gentle floating effect
+          const time = state.clock.getElapsedTime();
+          const positionData = positions[i];
+          const speed = positionData.speed;
+          
+          mesh.position.y += Math.sin(time * speed) * 0.005;
+          mesh.position.x += Math.cos(time * speed) * 0.005;
+          
+          // Reset particles if they go too far
+          if (mesh.position.y > 20) mesh.position.y = -20;
+          if (mesh.position.x > 20) mesh.position.x = -20;
+        }
+      });
+    }
   });
 
   return (
     <group ref={particles}>
       {positions.map((props, i) => (
-        <Sphere key={i} args={[0.1, 8, 8]} position={new THREE.Vector3(...props.position as [number, number, number])}>
-          <meshStandardMaterial transparent opacity={0.5} color={color} />
-        </Sphere>
+        <mesh 
+          key={i} 
+          position={props.position as [number, number, number]}
+          ref={(el) => {
+            if (el) meshRefs.current[i] = el;
+          }}
+        >
+          <sphereGeometry args={[0.1, 8, 8]} />
+          <meshStandardMaterial color={color} transparent opacity={0.5} />
+        </mesh>
       ))}
     </group>
   );
