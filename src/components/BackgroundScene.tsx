@@ -1,9 +1,9 @@
 
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, Environment } from '@react-three/drei';
+import { Sphere } from '@react-three/drei';
 import { useTheme } from '@/hooks/use-theme';
-import { Vector3 } from 'three';
+import * as THREE from 'three';
 
 // Particles component that creates floating spheres
 const Particles = ({ count = 100, color = "#6B46C1" }) => {
@@ -38,8 +38,8 @@ const Particles = ({ count = 100, color = "#6B46C1" }) => {
   return (
     <group ref={particles}>
       {positions.map((props, i) => (
-        <Sphere key={i} args={[0.1, 8, 8]} position={new Vector3(...props.position as [number, number, number])}>
-          <meshStandardMaterial color={color} transparent opacity={0.5} />
+        <Sphere key={i} args={[0.1, 8, 8]} position={new THREE.Vector3(...props.position as [number, number, number])}>
+          <meshStandardMaterial transparent opacity={0.5} color={color} />
         </Sphere>
       ))}
     </group>
@@ -59,7 +59,6 @@ export const BackgroundScene = () => {
           count={50} 
           color={theme === "dark" ? "#9b87f5" : "#6B46C1"} 
         />
-        <Environment preset="city" />
       </Canvas>
     </div>
   );

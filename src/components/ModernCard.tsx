@@ -16,6 +16,8 @@ export const ModernCard: React.FC<ModernCardProps> = ({
   hoverEffect = true,
   ...props
 }) => {
+  const hoverAnimation = hoverEffect ? { scale: 1.02, translateY: -5 } : {};
+  
   return (
     <motion.div
       className={cn(
@@ -27,7 +29,7 @@ export const ModernCard: React.FC<ModernCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      whileHover={hoverEffect ? { scale: 1.02, translateY: -5 } : {}}
+      whileHover={hoverAnimation}
       {...props}
     >
       {children}
