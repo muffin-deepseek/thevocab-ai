@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface ModernCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ModernCardProps extends Omit<HTMLMotionProps<"div">, "onDrag"> {
   children: React.ReactNode;
   gradient?: boolean;
   hoverEffect?: boolean;
