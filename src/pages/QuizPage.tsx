@@ -1,30 +1,37 @@
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import { useVocab } from '@/contexts/VocabContext';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Check, X, Zap, RefreshCw } from 'lucide-react';
+import { Check, X, Zap, RefreshCw, Heart, Volume2 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import LevelFilter from '@/components/LevelFilter';
 import { useToast } from '@/hooks/use-toast';
 import { Word } from '@/data/wordData';
 import QuizResults from '@/components/QuizResults';
+import ConversationQuizQuestion from '@/components/ConversationQuizQuestion';
+import { generateConversation } from '@/utils/conversationGenerator';
+import { speak, stop } from '@/utils/textToSpeech';
 
-type QuizMode = 'definition' | 'word';
+type QuizMode = 'definition' | 'word' | 'conversation';
 type QuizStatus = 'active' | 'completed';
 
 interface QuizQuestion {
   questionWord: Word;
   options: Word[];
   correctIndex: number;
+  conversation?: string;
 }
+
+const MAX_HEARTS = 3;
 
 const QuizPage: React.FC = () => {
   const { filteredWords, toggleLearned } = useVocab();
   const { toast } = useToast();
-  const [quizMode, setQuizMode] = useState<QuizMode>('definition');
+  const [quizMode, setQuizMode] = useState<QuizMode>('conversation');
   const [quizStatus, setQuizStatus] = useState<QuizStatus>('active');
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -34,7 +41,7 @@ const QuizPage: React.FC = () => {
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
   const [quizWords, setQuizWords] = useState<Word[]>([]);
-  // Add a flag to prevent regeneration during an active quiz
+  const [hearts, setHearts] = useState(MAX_HEARTS);
   const [quizActive, setQuizActive] = useState(false);
 
   // Generate new quiz only when filteredWords change AND not during an active quiz
@@ -48,7 +55,7 @@ const QuizPage: React.FC = () => {
   useEffect(() => {
     if (questions.length > 0 && quizStatus === 'active' && currentQuestionIndex === 0) {
       setStartTime(new Date());
-      setQuizActive(true); // Set active when quiz starts
+      setQuizActive(true);
     }
   }, [questions, quizStatus, currentQuestionIndex]);
 
@@ -72,7 +79,7 @@ const QuizPage: React.FC = () => {
       const questionWord = shuffledWords[i];
       usedWords.push(questionWord);
       
-      // Generate 3 incorrect options
+      // Generate 3 incorrect options that are different from the questionWord
       const incorrectOptions: Word[] = shuffledWords
         .filter(word => word.id !== questionWord.id)
         .slice(0, 3);
@@ -83,10 +90,14 @@ const QuizPage: React.FC = () => {
       // Find the index of the correct answer
       const correctIndex = allOptions.findIndex(option => option.id === questionWord.id);
       
+      // Generate conversation for conversation mode
+      const conversation = generateConversation(questionWord);
+      
       newQuestions.push({
         questionWord,
         options: allOptions,
-        correctIndex
+        correctIndex,
+        conversation
       });
     }
 
@@ -99,23 +110,46 @@ const QuizPage: React.FC = () => {
     setSelectedOption(null);
     setStartTime(new Date());
     setEndTime(null);
+    setHearts(MAX_HEARTS);
   };
 
-  const handleAnswer = (optionIndex: number) => {
+  const handleAnswer = (isCorrect: boolean, optionIndex: number) => {
     if (isAnswered) return;
     
     setSelectedOption(optionIndex);
     setIsAnswered(true);
     
-    const isCorrect = optionIndex === questions[currentQuestionIndex].correctIndex;
     if (isCorrect) {
+      // Increase score and mark word as learned
       setScore(score + 1);
-      // Mark word as learned if answer is correct
       toggleLearned(questions[currentQuestionIndex].questionWord.id);
+      
+      // Play success sound
+      const audio = new Audio('/success.mp3');
+      audio.play().catch(() => {
+        // Fallback if audio can't play - silent failure
+      });
+    } else {
+      // Decrease hearts for wrong answers
+      setHearts(hearts - 1);
+      
+      // Play error sound
+      const audio = new Audio('/error.mp3');
+      audio.play().catch(() => {
+        // Fallback if audio can't play - silent failure
+      });
     }
   };
 
   const handleNextQuestion = () => {
+    // Check if we've run out of hearts
+    if (hearts <= 0) {
+      setQuizStatus('completed');
+      setEndTime(new Date());
+      setQuizActive(false);
+      return;
+    }
+    
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setIsAnswered(false);
@@ -124,12 +158,12 @@ const QuizPage: React.FC = () => {
       // Quiz completed
       setQuizStatus('completed');
       setEndTime(new Date());
-      setQuizActive(false); // Reset flag when quiz completes
+      setQuizActive(false);
     }
   };
 
   const restartQuiz = () => {
-    setQuizActive(false); // Reset flag to allow a new quiz
+    setQuizActive(false);
     generateQuiz();
   };
 
@@ -171,6 +205,14 @@ const QuizPage: React.FC = () => {
             >
               Definition → Word
             </Button>
+            <Button 
+              variant={quizMode === 'conversation' ? 'default' : 'outline'} 
+              size="sm" 
+              onClick={() => setQuizMode('conversation')}
+              disabled={quizStatus === 'active' && currentQuestionIndex > 0}
+            >
+              Conversation
+            </Button>
           </div>
         </div>
         
@@ -208,6 +250,16 @@ const QuizPage: React.FC = () => {
                         <span>Score</span>
                         <span>{score} / {currentQuestionIndex + (isAnswered ? 1 : 0)}</span>
                       </div>
+                      
+                      {/* Hearts display */}
+                      <div className="flex items-center mt-4 gap-1">
+                        {Array.from({ length: MAX_HEARTS }).map((_, i) => (
+                          <Heart 
+                            key={i}
+                            className={`h-5 w-5 ${i < hearts ? 'text-red-500 fill-red-500' : 'text-gray-300'}`}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -217,65 +269,95 @@ const QuizPage: React.FC = () => {
           
           <div className="md:col-span-3">
             {quizStatus === 'active' && questions.length > 0 ? (
-              <Card className="shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    Question {currentQuestionIndex + 1}: 
-                    {quizMode === 'definition' 
-                      ? ` What is the definition of "${currentQuestion.questionWord.word}"?`
-                      : ` Which word means "${currentQuestion.questionWord.definition}"?`}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <RadioGroup value={selectedOption?.toString()} className="space-y-3">
-                    {currentQuestion.options.map((option, index) => (
-                      <div 
-                        key={option.id}
-                        className={`
-                          flex items-center space-x-2 p-3 rounded-md 
-                          ${isAnswered && index === currentQuestion.correctIndex ? 'bg-green-50 border border-green-200' : ''}
-                          ${isAnswered && selectedOption === index && index !== currentQuestion.correctIndex ? 'bg-red-50 border border-red-200' : ''}
-                          ${!isAnswered ? 'hover:bg-gray-50 cursor-pointer' : ''}
-                        `}
-                        onClick={() => !isAnswered && handleAnswer(index)}
-                      >
-                        <RadioGroupItem 
-                          value={index.toString()} 
-                          id={`option-${index}`}
-                          disabled={isAnswered}
-                          className="flex-shrink-0"
-                        />
-                        <label htmlFor={`option-${index}`} className="flex-grow cursor-pointer">
-                          {quizMode === 'definition' ? option.definition : option.word}
-                        </label>
-                        {isAnswered && index === currentQuestion.correctIndex && (
-                          <Check className="h-5 w-5 text-green-500" />
-                        )}
-                        {isAnswered && selectedOption === index && index !== currentQuestion.correctIndex && (
-                          <X className="h-5 w-5 text-red-500" />
-                        )}
-                      </div>
-                    ))}
-                  </RadioGroup>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  {isAnswered && (
-                    <div>
-                      {selectedOption === currentQuestion.correctIndex ? (
-                        <p className="text-green-600">Correct!</p>
-                      ) : (
-                        <p className="text-red-600">Incorrect!</p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentQuestionIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {quizMode === 'conversation' ? (
+                    <>
+                      <ConversationQuizQuestion
+                        conversation={currentQuestion.conversation || ''}
+                        options={currentQuestion.options}
+                        correctIndex={currentQuestion.correctIndex}
+                        onAnswer={handleAnswer}
+                        disabled={hearts <= 0}
+                      />
+                      
+                      {isAnswered && (
+                        <div className="flex justify-end mt-4">
+                          <Button onClick={handleNextQuestion}>
+                            {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'View Results'}
+                          </Button>
+                        </div>
                       )}
-                    </div>
+                    </>
+                  ) : (
+                    <Card className="shadow-sm">
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          Question {currentQuestionIndex + 1}: 
+                          {quizMode === 'definition' 
+                            ? ` What is the definition of "${currentQuestion.questionWord.word}"?`
+                            : ` Which word means "${currentQuestion.questionWord.definition}"?`}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <RadioGroup value={selectedOption?.toString()} className="space-y-3">
+                          {currentQuestion.options.map((option, index) => (
+                            <div 
+                              key={option.id}
+                              className={`
+                                flex items-center space-x-2 p-3 rounded-md 
+                                ${isAnswered && index === currentQuestion.correctIndex ? 'bg-green-50 border border-green-200' : ''}
+                                ${isAnswered && selectedOption === index && index !== currentQuestion.correctIndex ? 'bg-red-50 border border-red-200' : ''}
+                                ${!isAnswered ? 'hover:bg-gray-50 cursor-pointer' : ''}
+                              `}
+                              onClick={() => !isAnswered && handleAnswer(index === currentQuestion.correctIndex, index)}
+                            >
+                              <RadioGroupItem 
+                                value={index.toString()} 
+                                id={`option-${index}`}
+                                disabled={isAnswered}
+                                className="flex-shrink-0"
+                              />
+                              <label htmlFor={`option-${index}`} className="flex-grow cursor-pointer">
+                                {quizMode === 'definition' ? option.definition : option.word}
+                              </label>
+                              {isAnswered && index === currentQuestion.correctIndex && (
+                                <Check className="h-5 w-5 text-green-500" />
+                              )}
+                              {isAnswered && selectedOption === index && index !== currentQuestion.correctIndex && (
+                                <X className="h-5 w-5 text-red-500" />
+                              )}
+                            </div>
+                          ))}
+                        </RadioGroup>
+                      </CardContent>
+                      <CardFooter className="flex justify-between">
+                        {isAnswered && (
+                          <div>
+                            {selectedOption === currentQuestion.correctIndex ? (
+                              <p className="text-green-600">Correct!</p>
+                            ) : (
+                              <p className="text-red-600">Incorrect!</p>
+                            )}
+                          </div>
+                        )}
+                        <Button
+                          onClick={handleNextQuestion}
+                          disabled={!isAnswered}
+                        >
+                          {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'View Results'}
+                        </Button>
+                      </CardFooter>
+                    </Card>
                   )}
-                  <Button
-                    onClick={isAnswered ? handleNextQuestion : () => {}}
-                    disabled={!isAnswered}
-                  >
-                    {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'View Results'}
-                  </Button>
-                </CardFooter>
-              </Card>
+                </motion.div>
+              </AnimatePresence>
             ) : quizStatus === 'completed' ? (
               <QuizResults 
                 score={score}
@@ -301,7 +383,7 @@ const QuizPage: React.FC = () => {
                       <h3 className="text-xl font-bold mb-4">Ready to Test Your Vocabulary?</h3>
                       <p className="text-gray-600 mb-6">
                         This quiz will test your knowledge of the selected words. 
-                        Choose the correct definition for each word to improve your GRE vocabulary.
+                        Choose the correct word for each conversation to improve your GRE vocabulary.
                       </p>
                       <Button 
                         size="lg" 

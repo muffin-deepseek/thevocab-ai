@@ -10,13 +10,17 @@ interface VoiceButtonProps {
   className?: string;
   variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'default' | 'sm' | 'lg' | 'icon';
+  onSpeakStart?: () => void;
+  onSpeakEnd?: () => void;
 }
 
 const VoiceButton: React.FC<VoiceButtonProps> = ({ 
   text, 
   className,
   variant = 'ghost',
-  size = 'icon'
+  size = 'icon',
+  onSpeakStart,
+  onSpeakEnd
 }) => {
   const [speaking, setSpeaking] = useState(false);
 
@@ -36,19 +40,27 @@ const VoiceButton: React.FC<VoiceButtonProps> = ({
     const checkSpeakingInterval = setInterval(() => {
       if (!isSpeaking()) {
         setSpeaking(false);
+        if (onSpeakEnd) onSpeakEnd();
       }
     }, 100);
     
     return () => clearInterval(checkSpeakingInterval);
-  }, [speaking]);
+  }, [speaking, onSpeakEnd]);
 
   const handleClick = () => {
     if (speaking) {
       stop();
       setSpeaking(false);
+      if (onSpeakEnd) onSpeakEnd();
     } else {
-      speak(text);
+      speak(text, {
+        onEnd: () => {
+          setSpeaking(false);
+          if (onSpeakEnd) onSpeakEnd();
+        }
+      });
       setSpeaking(true);
+      if (onSpeakStart) onSpeakStart();
     }
   };
 
